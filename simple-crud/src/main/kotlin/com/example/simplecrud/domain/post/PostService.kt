@@ -9,4 +9,11 @@ class PostService(
     fun getPosts(): List<Post> {
         return postRepository.findAll()
     }
+    fun save(postCreateRequestDto: PostCreateRequestDto): PostDto {
+        val post = postRepository.save(
+            Post(title = postCreateRequestDto.title, description = postCreateRequestDto.description)
+        )
+
+        return PostDto(post)
+    }
 }

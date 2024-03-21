@@ -2,7 +2,9 @@ package com.example.simplecrud.domain.post
 
 import com.example.simplecrud.domain.common.BaseEntity
 import jakarta.persistence.*
+import lombok.Getter
 
+@Getter
 @Entity
 @Table(name = "posts")
 class Post (
