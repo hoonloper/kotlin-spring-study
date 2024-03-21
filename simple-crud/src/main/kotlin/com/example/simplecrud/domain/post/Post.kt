@@ -1,14 +1,14 @@
 package com.example.simplecrud.domain.post
 
 import com.example.simplecrud.domain.common.BaseEntity
-import jakarta.persistence.Column
-import jakarta.persistence.Entity
-import jakarta.persistence.Id
+import jakarta.persistence.*
 
 @Entity
+@Table(name = "posts")
 class Post (
     @Id
-    var id: Long,
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    var id: Long? = null,
     @Column
     var title: String,
     @Column
