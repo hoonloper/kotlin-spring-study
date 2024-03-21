@@ -17,21 +17,47 @@ class PostControllerTest(
 ): DescribeSpec({
     extension(SpringExtension)
 
+    describe("조회") {
+        context("Post 전체를 요청하면") {
+            it("정상적으로 조회한다.") {
+                val postCreateRequestDto = PostCreateRequestDto(title = "제목", description = "내용")
+                val postCreateRequestDtoList = List(5) {
+                    postController.save(postCreateRequestDto).body
+                }
+
+                val posts = postController.getPosts().body
+
+                posts!!.forEachIndexed { index, post ->
+                    val expectedPost = postCreateRequestDtoList[index]
+
+                    expectedPost shouldNotBe null
+
+                    if(expectedPost != null) {
+                        post.getId() shouldBe expectedPost.getId()
+                        post.getTitle() shouldBe expectedPost.getTitle()
+                        post.getDescription() shouldBe expectedPost.getDescription()
+                        post.getCreatedAt().isEqual(expectedPost.getCreatedAt()) shouldBe true
+                        post.getUpdatedAt().isEqual(expectedPost.getUpdatedAt()) shouldBe true
+                    }
+                }
+            }
+        }
+    }
+
     describe("생성") {
         context("Post를 생성하면") {
             it("정상적으로 저장된다.") {
                 val postCreateRequestDto = PostCreateRequestDto(title = "제목", description = "내용")
-                val response = postController.save(postCreateRequestDto)
-                val postDto = response.body
+                val post = postController.save(postCreateRequestDto).body
 
-                postDto shouldNotBe null
+                post shouldNotBe null
 
-                if (postDto != null) {
-                    postDto.getId() shouldNotBe null
-                    postDto.getTitle() shouldBe postCreateRequestDto.title
-                    postDto.getDescription() shouldBe postCreateRequestDto.description
-                    postDto.getCreatedAt() shouldBeBefore LocalDateTime.now()
-                    postDto.getUpdatedAt() shouldBeBefore LocalDateTime.now()
+                if (post != null) {
+                    post.getId() shouldNotBe null
+                    post.getTitle() shouldBe postCreateRequestDto.title
+                    post.getDescription() shouldBe postCreateRequestDto.description
+                    post.getCreatedAt() shouldBeBefore LocalDateTime.now()
+                    post.getUpdatedAt() shouldBeBefore LocalDateTime.now()
                 }
             }
         }
