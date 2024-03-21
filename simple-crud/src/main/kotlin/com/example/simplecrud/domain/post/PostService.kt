@@ -6,9 +6,12 @@ import org.springframework.stereotype.Service
 class PostService(
     private val postRepository: PostRepository
 ) {
-    fun getPosts(): List<Post> {
-        return postRepository.findAll()
+    fun getPosts(): List<PostDto> {
+        val posts = postRepository.findAll()
+
+        return posts.map { PostDto(it) }
     }
+
     fun save(postCreateRequestDto: PostCreateRequestDto): PostDto {
         val post = postRepository.save(
             Post(title = postCreateRequestDto.title, description = postCreateRequestDto.description)

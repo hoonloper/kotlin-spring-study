@@ -17,7 +17,7 @@ class PostController(
     private val postService: PostService
 ) {
     @GetMapping
-    fun getPosts(): ResponseEntity<Any> {
+    fun getPosts(): ResponseEntity<List<PostDto>> {
         return ResponseEntity.ok(postService.getPosts())
     }
 
