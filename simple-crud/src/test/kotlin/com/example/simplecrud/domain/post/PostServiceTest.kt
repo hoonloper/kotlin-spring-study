@@ -1,7 +1,10 @@
 package com.example.simplecrud.domain.post
 
+import com.example.simplecrud.domain.post.dto.PostCreateRequestDto
+import com.example.simplecrud.domain.post.dto.PostUpdateRequestDto
 import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.extensions.spring.SpringExtension
+import io.kotest.matchers.date.shouldBeAfter
 import io.kotest.matchers.date.shouldBeBefore
 import io.kotest.matchers.longs.shouldBeGreaterThan
 import io.kotest.matchers.shouldBe
@@ -72,6 +75,30 @@ class PostServiceTest (
                 expectedPostDto.getDescription() shouldBe postDto.description
                 expectedPostDto.getCreatedAt() shouldBeBefore LocalDateTime.now()
                 expectedPostDto.getUpdatedAt() shouldBeBefore LocalDateTime.now()
+            }
+        }
+    }
+
+    describe("수정") {
+        context("Post를 수정하면") {
+            it("정상적으로 수정된다.") {
+                val postCreateRequestDto = PostCreateRequestDto(title = "제목", description = "내용")
+                val post = postService.save(postCreateRequestDto)
+                val postId = post.getId()
+                val foundPost = postService.getPostById(postId)
+                val postUpdateRequestDto = PostUpdateRequestDto(title = foundPost.getTitle(), description = foundPost.getDescription())
+
+                postService.updateById(postId, postUpdateRequestDto)
+
+                val updatedPost = postService.getPostById(postId)
+
+                updatedPost shouldNotBe null
+
+                updatedPost.getId() shouldBe postId
+                updatedPost.getTitle() shouldBe postUpdateRequestDto.title
+                updatedPost.getDescription() shouldBe postUpdateRequestDto.description
+                updatedPost.getCreatedAt() shouldBe post.getCreatedAt()
+                updatedPost.getUpdatedAt() shouldBeAfter post.getUpdatedAt()
             }
         }
     }

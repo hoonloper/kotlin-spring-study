@@ -1,8 +1,10 @@
 package com.example.simplecrud.application.controllers
 
-import com.example.simplecrud.domain.post.PostCreateRequestDto
+import com.example.simplecrud.domain.post.dto.PostCreateRequestDto
+import com.example.simplecrud.domain.post.dto.PostUpdateRequestDto
 import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.extensions.spring.SpringExtension
+import io.kotest.matchers.date.shouldBeAfter
 import io.kotest.matchers.date.shouldBeBefore
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
@@ -74,6 +76,34 @@ class PostControllerTest(
                     post.getDescription() shouldBe postCreateRequestDto.description
                     post.getCreatedAt() shouldBeBefore LocalDateTime.now()
                     post.getUpdatedAt() shouldBeBefore LocalDateTime.now()
+                }
+            }
+        }
+    }
+
+    describe("수정") {
+        context("Post를 수정하면") {
+            it("정상적으로 수정된다.") {
+                val postCreateRequestDto = PostCreateRequestDto(title = "제목", description = "내용")
+                val post = postController.save(postCreateRequestDto).body ?: throw Error()
+                val postId = post.getId()
+                val foundPost = postController.getPostById(postId).body ?: throw Error()
+
+                val postUpdateRequestDto = PostUpdateRequestDto(title = foundPost.getTitle(), description = foundPost.getDescription())
+
+                postController.updateById(postId, postUpdateRequestDto)
+
+                val updatedPost = postController.getPostById(postId).body
+
+
+                updatedPost shouldNotBe null
+
+                if (updatedPost != null) {
+                    updatedPost.getId() shouldBe postId
+                    updatedPost.getTitle() shouldBe postUpdateRequestDto.title
+                    updatedPost.getDescription() shouldBe postUpdateRequestDto.description
+                    updatedPost.getCreatedAt() shouldBe post.getCreatedAt()
+                    updatedPost.getUpdatedAt() shouldBeAfter post.getUpdatedAt()
                 }
             }
         }
