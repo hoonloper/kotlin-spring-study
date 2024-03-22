@@ -4,7 +4,6 @@ import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.extensions.spring.SpringExtension
 import io.kotest.matchers.date.shouldBeBefore
 import io.kotest.matchers.longs.shouldBeGreaterThan
-import io.kotest.matchers.longs.shouldBeLessThan
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
 import org.springframework.boot.test.context.SpringBootTest
@@ -18,6 +17,31 @@ class PostServiceTest (
     private val postService: PostService
 ): DescribeSpec({
     extension(SpringExtension)
+
+    describe("getPosts") {
+        context("Post 전체를 요청하면") {
+            it("정상적으로 조회한다.") {
+                val postCreateRequestDto = PostCreateRequestDto(title = "제목", description = "내용")
+                val postCreateRequestDtoList = List(5) {
+                    postService.save(postCreateRequestDto)
+                }
+
+                val posts = postService.getPosts()
+
+                posts.forEachIndexed { index, post ->
+                    val expectedPost = postCreateRequestDtoList[index]
+
+                    expectedPost shouldNotBe null
+
+                    post.getId() shouldBe expectedPost.getId()
+                    post.getTitle() shouldBe expectedPost.getTitle()
+                    post.getDescription() shouldBe expectedPost.getDescription()
+                    post.getCreatedAt().isEqual(expectedPost.getCreatedAt()) shouldBe true
+                    post.getUpdatedAt().isEqual(expectedPost.getUpdatedAt()) shouldBe true
+                }
+            }
+        }
+    }
 
     describe("save") {
         context("Post를 저장하면") {
