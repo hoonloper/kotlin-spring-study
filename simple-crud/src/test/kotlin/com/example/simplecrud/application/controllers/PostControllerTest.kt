@@ -42,6 +42,22 @@ class PostControllerTest(
                 }
             }
         }
+        context("Post 하나를 요청하면") {
+            it("정상적으로 조회한다.") {
+                val postCreateRequestDto = PostCreateRequestDto(title = "제목", description = "내용")
+                val expectedPost = postController.save(postCreateRequestDto).body
+
+                val post = expectedPost?.getId()?.let { postController.getPostById(it).body }
+
+                expectedPost shouldNotBe null
+
+                expectedPost?.getId() shouldBe post?.getId()
+                expectedPost?.getTitle() shouldBe post?.getTitle()
+                expectedPost?.getDescription() shouldBe post?.getDescription()
+                expectedPost?.getCreatedAt()?.isEqual(post?.getCreatedAt()) shouldBe true
+                expectedPost?.getUpdatedAt()?.isEqual(post?.getUpdatedAt()) shouldBe true
+            }
+        }
     }
 
     describe("생성") {
