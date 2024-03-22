@@ -19,4 +19,8 @@ class PostService(
 
         return PostDto(post)
     }
+
+    fun getPostById(postId: Long): PostDto? {
+        return PostDto(postRepository.findById(postId).orElseThrow())
+    }
 }
