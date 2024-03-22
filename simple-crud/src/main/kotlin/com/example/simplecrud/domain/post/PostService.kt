@@ -1,5 +1,7 @@
 package com.example.simplecrud.domain.post
 
+import com.example.simplecrud.domain.post.dto.PostCreateRequestDto
+import com.example.simplecrud.domain.post.dto.PostDto
 import org.springframework.stereotype.Service
 
 @Service

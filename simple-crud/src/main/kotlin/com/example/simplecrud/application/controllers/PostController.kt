@@ -1,7 +1,7 @@
 package com.example.simplecrud.application.controllers
 
-import com.example.simplecrud.domain.post.PostCreateRequestDto
-import com.example.simplecrud.domain.post.PostDto
+import com.example.simplecrud.domain.post.dto.PostCreateRequestDto
+import com.example.simplecrud.domain.post.dto.PostDto
 import com.example.simplecrud.domain.post.PostService
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity

@@ -1,5 +1,6 @@
-package com.example.simplecrud.domain.post
+package com.example.simplecrud.domain.post.dto
 
+import com.example.simplecrud.domain.post.Post
 import lombok.Getter
 import java.time.LocalDateTime
 

@@ -1,4 +1,4 @@
-package com.example.simplecrud.domain.post
+package com.example.simplecrud.domain.post.dto
 
 import lombok.Getter
 
