@@ -18,7 +18,7 @@ class PostServiceTest (
 ): DescribeSpec({
     extension(SpringExtension)
 
-    describe("getPosts") {
+    describe("조회") {
         context("Post 전체를 요청하면") {
             it("정상적으로 조회한다.") {
                 val postCreateRequestDto = PostCreateRequestDto(title = "제목", description = "내용")
@@ -39,6 +39,22 @@ class PostServiceTest (
                     post.getCreatedAt().isEqual(expectedPost.getCreatedAt()) shouldBe true
                     post.getUpdatedAt().isEqual(expectedPost.getUpdatedAt()) shouldBe true
                 }
+            }
+        }
+        context("Post 하나를 요청하면") {
+            it("정상적으로 조회한다.") {
+                val postCreateRequestDto = PostCreateRequestDto(title = "제목", description = "내용")
+                val expectedPost = postService.save(postCreateRequestDto)
+
+                val post = postService.getPostById(expectedPost.getId())
+
+                expectedPost shouldNotBe null
+
+                expectedPost.getId() shouldBe post?.getId()
+                expectedPost.getTitle() shouldBe post?.getTitle()
+                expectedPost.getDescription() shouldBe post?.getDescription()
+                expectedPost.getCreatedAt().isEqual(post?.getCreatedAt()) shouldBe true
+                expectedPost.getUpdatedAt().isEqual(post?.getUpdatedAt()) shouldBe true
             }
         }
     }
