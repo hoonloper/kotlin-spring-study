@@ -1,8 +1,10 @@
 package com.example.simplecrud.domain.post
 
 import com.example.simplecrud.domain.common.BaseEntity
+import com.example.simplecrud.domain.post.dto.PostUpdateRequestDto
 import jakarta.persistence.*
 import lombok.Getter
+import java.time.LocalDateTime
 
 @Getter
 @Entity
@@ -15,4 +17,10 @@ class Post (
     var title: String,
     @Column
     var description: String,
-): BaseEntity() {}
+): BaseEntity() {
+    fun update(postUpdateRequestDto: PostUpdateRequestDto) {
+        this.title = postUpdateRequestDto.title
+        this.description = postUpdateRequestDto.description
+        this.updatedAt = LocalDateTime.now()
+    }
+}

@@ -2,6 +2,7 @@ package com.example.simplecrud.domain.post
 
 import com.example.simplecrud.domain.post.dto.PostCreateRequestDto
 import com.example.simplecrud.domain.post.dto.PostDto
+import com.example.simplecrud.domain.post.dto.PostUpdateRequestDto
 import org.springframework.stereotype.Service
 
 @Service
@@ -22,7 +23,15 @@ class PostService(
         return PostDto(post)
     }
 
-    fun getPostById(postId: Long): PostDto? {
+    fun getPostById(postId: Long): PostDto {
         return PostDto(postRepository.findById(postId).orElseThrow())
+    }
+
+    fun updateById(postId: Long, postUpdateRequestDto: PostUpdateRequestDto) {
+        val post = postRepository.findById(postId).orElseThrow()
+
+        post.update(postUpdateRequestDto)
+
+        postRepository.save(post)
     }
 }
