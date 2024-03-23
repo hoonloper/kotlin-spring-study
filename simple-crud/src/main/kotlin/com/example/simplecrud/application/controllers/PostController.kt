@@ -34,6 +34,14 @@ class PostController(
         @RequestBody postUpdateRequestDto: PostUpdateRequestDto
     ): ResponseEntity.HeadersBuilder<*> {
         postService.updateById(postId, postUpdateRequestDto)
+
+        return ResponseEntity.noContent()
+    }
+
+    @DeleteMapping("{postId}")
+    fun deleteById(@PathVariable postId: Long): ResponseEntity.HeadersBuilder<*> {
+        postService.deleteById(postId)
+
         return ResponseEntity.noContent()
     }
 }

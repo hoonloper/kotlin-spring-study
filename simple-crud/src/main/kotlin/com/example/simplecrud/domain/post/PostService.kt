@@ -34,4 +34,10 @@ class PostService(
 
         postRepository.save(post)
     }
+
+    fun deleteById(postId: Long) {
+        postRepository.findById(postId).orElseThrow()
+
+        postRepository.deleteById(postId)
+    }
 }
