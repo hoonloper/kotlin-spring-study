@@ -2,6 +2,7 @@ package com.example.simplecrud.domain.post
 
 import com.example.simplecrud.domain.post.dto.PostCreateRequestDto
 import com.example.simplecrud.domain.post.dto.PostUpdateRequestDto
+import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.extensions.spring.SpringExtension
 import io.kotest.matchers.date.shouldBeAfter
@@ -62,7 +63,7 @@ class PostServiceTest (
         }
     }
 
-    describe("save") {
+    describe("저장") {
         context("Post를 저장하면") {
             it("정상적으로 저장된다.") {
                 val postDto = PostCreateRequestDto(title = "제목", description = "내용")
@@ -99,6 +100,25 @@ class PostServiceTest (
                 updatedPost.getDescription() shouldBe postUpdateRequestDto.description
                 updatedPost.getCreatedAt() shouldBe post.getCreatedAt()
                 updatedPost.getUpdatedAt() shouldBeAfter post.getUpdatedAt()
+            }
+        }
+    }
+
+    describe("삭제") {
+        context("Post를 삭제하면") {
+            it("정상적으로 삭제된다.") {
+                val postCreateRequestDto = PostCreateRequestDto(title = "제목", description = "내용")
+                val post = postService.save(postCreateRequestDto)
+                val postId = post.getId()
+
+                postService.deleteById(postId)
+
+                // TODO: 커스텀 exception으로 교체
+                val exception = shouldThrow<NoSuchElementException> {
+                    postService.getPostById(postId)
+                }
+
+                exception.message shouldBe "No value present"
             }
         }
     }
