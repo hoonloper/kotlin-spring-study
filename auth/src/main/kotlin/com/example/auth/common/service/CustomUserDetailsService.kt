@@ -1,5 +1,6 @@
 package com.example.auth.common.service
 
+import com.example.auth.common.dto.CustomUser
 import com.example.auth.member.entity.Member
 import com.example.auth.member.repository.MemberRepository
 import org.springframework.security.core.authority.SimpleGrantedAuthority
@@ -21,7 +22,8 @@ class CustomUserDetailsService (
 
 
     private fun createUserDetails(member: Member): UserDetails =
-        User(
+        CustomUser(
+            member.id!!,
             member.loginId,
             passwordEncoder.encode(member.password),
             member.memberRole!!.map { SimpleGrantedAuthority("ROLE_${it.role}") }
