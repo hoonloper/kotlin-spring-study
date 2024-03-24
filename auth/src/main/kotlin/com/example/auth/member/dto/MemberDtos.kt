@@ -2,6 +2,7 @@ package com.example.auth.member.dto
 
 import com.example.auth.common.annotation.ValidEnum
 import com.example.auth.common.status.Gender
+import com.example.auth.member.entity.Member
 import com.fasterxml.jackson.annotation.JsonProperty
 import jakarta.validation.constraints.Email
 import jakarta.validation.constraints.NotBlank
@@ -64,4 +65,6 @@ data class MemberDtoRequest (
 
     private fun String.toLocalDate(): LocalDate =
         LocalDate.parse(this, DateTimeFormatter.ofPattern("yyyy-MM-dd"))
+
+    fun toEntity(): Member = Member(id, loginId, password, name, birthDate, gender, email)
 }
