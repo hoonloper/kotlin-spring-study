@@ -1,9 +1,6 @@
 package com.example.simplecrud.domain.post.dto
 
-import lombok.Getter
-
-@Getter
-class PostUpdateRequestDto(
+data class PostUpdateRequestDto(
     val title: String,
     val description: String,
 )

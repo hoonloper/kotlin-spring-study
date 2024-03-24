@@ -37,11 +37,11 @@ class PostServiceTest (
 
                     expectedPost shouldNotBe null
 
-                    post.getId() shouldBe expectedPost.getId()
-                    post.getTitle() shouldBe expectedPost.getTitle()
-                    post.getDescription() shouldBe expectedPost.getDescription()
-                    post.getCreatedAt().isEqual(expectedPost.getCreatedAt()) shouldBe true
-                    post.getUpdatedAt().isEqual(expectedPost.getUpdatedAt()) shouldBe true
+                    post.id shouldBe expectedPost.id
+                    post.title shouldBe expectedPost.title
+                    post.description shouldBe expectedPost.description
+                    post.createdAt.isEqual(expectedPost.createdAt) shouldBe true
+                    post.updatedAt.isEqual(expectedPost.updatedAt) shouldBe true
                 }
             }
         }
@@ -50,15 +50,15 @@ class PostServiceTest (
                 val postCreateRequestDto = PostCreateRequestDto(title = "제목", description = "내용")
                 val expectedPost = postService.save(postCreateRequestDto)
 
-                val post = postService.getPostById(expectedPost.getId())
+                val post = postService.getPostById(expectedPost.id)
 
                 expectedPost shouldNotBe null
 
-                expectedPost.getId() shouldBe post?.getId()
-                expectedPost.getTitle() shouldBe post?.getTitle()
-                expectedPost.getDescription() shouldBe post?.getDescription()
-                expectedPost.getCreatedAt().isEqual(post?.getCreatedAt()) shouldBe true
-                expectedPost.getUpdatedAt().isEqual(post?.getUpdatedAt()) shouldBe true
+                expectedPost.id shouldBe post.id
+                expectedPost.title shouldBe post.title
+                expectedPost.description shouldBe post.description
+                expectedPost.createdAt.isEqual(post.createdAt) shouldBe true
+                expectedPost.updatedAt.isEqual(post.updatedAt) shouldBe true
             }
         }
     }
@@ -71,11 +71,11 @@ class PostServiceTest (
 
                 expectedPostDto shouldNotBe null
 
-                expectedPostDto.getId() shouldBeGreaterThan 0
-                expectedPostDto.getTitle() shouldBe postDto.title
-                expectedPostDto.getDescription() shouldBe postDto.description
-                expectedPostDto.getCreatedAt() shouldBeBefore LocalDateTime.now()
-                expectedPostDto.getUpdatedAt() shouldBeBefore LocalDateTime.now()
+                expectedPostDto.id shouldBeGreaterThan 0
+                expectedPostDto.title shouldBe postDto.title
+                expectedPostDto.description shouldBe postDto.description
+                expectedPostDto.createdAt shouldBeBefore LocalDateTime.now()
+                expectedPostDto.updatedAt shouldBeBefore LocalDateTime.now()
             }
         }
     }
@@ -85,9 +85,9 @@ class PostServiceTest (
             it("정상적으로 수정된다.") {
                 val postCreateRequestDto = PostCreateRequestDto(title = "제목", description = "내용")
                 val post = postService.save(postCreateRequestDto)
-                val postId = post.getId()
+                val postId = post.id
                 val foundPost = postService.getPostById(postId)
-                val postUpdateRequestDto = PostUpdateRequestDto(title = foundPost.getTitle(), description = foundPost.getDescription())
+                val postUpdateRequestDto = PostUpdateRequestDto(title = foundPost.title, description = foundPost.description)
 
                 postService.updateById(postId, postUpdateRequestDto)
 
@@ -95,11 +95,11 @@ class PostServiceTest (
 
                 updatedPost shouldNotBe null
 
-                updatedPost.getId() shouldBe postId
-                updatedPost.getTitle() shouldBe postUpdateRequestDto.title
-                updatedPost.getDescription() shouldBe postUpdateRequestDto.description
-                updatedPost.getCreatedAt() shouldBe post.getCreatedAt()
-                updatedPost.getUpdatedAt() shouldBeAfter post.getUpdatedAt()
+                updatedPost.id shouldBe postId
+                updatedPost.title shouldBe postUpdateRequestDto.title
+                updatedPost.description shouldBe postUpdateRequestDto.description
+                updatedPost.createdAt shouldBe post.createdAt
+                updatedPost.updatedAt shouldBeAfter post.updatedAt
             }
         }
     }
@@ -109,7 +109,7 @@ class PostServiceTest (
             it("정상적으로 삭제된다.") {
                 val postCreateRequestDto = PostCreateRequestDto(title = "제목", description = "내용")
                 val post = postService.save(postCreateRequestDto)
-                val postId = post.getId()
+                val postId = post.id
 
                 postService.deleteById(postId)
 

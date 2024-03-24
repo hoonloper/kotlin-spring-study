@@ -36,11 +36,11 @@ class PostControllerTest(
                     expectedPost shouldNotBe null
 
                     if(expectedPost != null) {
-                        post.getId() shouldBe expectedPost.getId()
-                        post.getTitle() shouldBe expectedPost.getTitle()
-                        post.getDescription() shouldBe expectedPost.getDescription()
-                        post.getCreatedAt().isEqual(expectedPost.getCreatedAt()) shouldBe true
-                        post.getUpdatedAt().isEqual(expectedPost.getUpdatedAt()) shouldBe true
+                        post.id shouldBe expectedPost.id
+                        post.title shouldBe expectedPost.title
+                        post.description shouldBe expectedPost.description
+                        post.createdAt.isEqual(expectedPost.createdAt) shouldBe true
+                        post.updatedAt.isEqual(expectedPost.updatedAt) shouldBe true
                     }
                 }
             }
@@ -50,15 +50,15 @@ class PostControllerTest(
                 val postCreateRequestDto = PostCreateRequestDto(title = "제목", description = "내용")
                 val expectedPost = postController.save(postCreateRequestDto).body
 
-                val post = expectedPost?.getId()?.let { postController.getPostById(it).body }
+                val post = expectedPost?.id?.let { postController.getPostById(it).body }
 
                 expectedPost shouldNotBe null
 
-                expectedPost?.getId() shouldBe post?.getId()
-                expectedPost?.getTitle() shouldBe post?.getTitle()
-                expectedPost?.getDescription() shouldBe post?.getDescription()
-                expectedPost?.getCreatedAt()?.isEqual(post?.getCreatedAt()) shouldBe true
-                expectedPost?.getUpdatedAt()?.isEqual(post?.getUpdatedAt()) shouldBe true
+                expectedPost?.id shouldBe post?.id
+                expectedPost?.title shouldBe post?.title
+                expectedPost?.description shouldBe post?.description
+                expectedPost?.createdAt?.isEqual(post?.createdAt) shouldBe true
+                expectedPost?.updatedAt?.isEqual(post?.updatedAt) shouldBe true
             }
         }
     }
@@ -72,11 +72,11 @@ class PostControllerTest(
                 post shouldNotBe null
 
                 if (post != null) {
-                    post.getId() shouldNotBe null
-                    post.getTitle() shouldBe postCreateRequestDto.title
-                    post.getDescription() shouldBe postCreateRequestDto.description
-                    post.getCreatedAt() shouldBeBefore LocalDateTime.now()
-                    post.getUpdatedAt() shouldBeBefore LocalDateTime.now()
+                    post.id shouldNotBe null
+                    post.title shouldBe postCreateRequestDto.title
+                    post.description shouldBe postCreateRequestDto.description
+                    post.createdAt shouldBeBefore LocalDateTime.now()
+                    post.updatedAt shouldBeBefore LocalDateTime.now()
                 }
             }
         }
@@ -87,10 +87,10 @@ class PostControllerTest(
             it("정상적으로 수정된다.") {
                 val postCreateRequestDto = PostCreateRequestDto(title = "제목", description = "내용")
                 val post = postController.save(postCreateRequestDto).body ?: throw Error()
-                val postId = post.getId()
+                val postId = post.id
                 val foundPost = postController.getPostById(postId).body ?: throw Error()
 
-                val postUpdateRequestDto = PostUpdateRequestDto(title = foundPost.getTitle(), description = foundPost.getDescription())
+                val postUpdateRequestDto = PostUpdateRequestDto(title = foundPost.title, description = foundPost.description)
 
                 postController.updateById(postId, postUpdateRequestDto)
 
@@ -100,11 +100,11 @@ class PostControllerTest(
                 updatedPost shouldNotBe null
 
                 if (updatedPost != null) {
-                    updatedPost.getId() shouldBe postId
-                    updatedPost.getTitle() shouldBe postUpdateRequestDto.title
-                    updatedPost.getDescription() shouldBe postUpdateRequestDto.description
-                    updatedPost.getCreatedAt() shouldBe post.getCreatedAt()
-                    updatedPost.getUpdatedAt() shouldBeAfter post.getUpdatedAt()
+                    updatedPost.id shouldBe postId
+                    updatedPost.title shouldBe postUpdateRequestDto.title
+                    updatedPost.description shouldBe postUpdateRequestDto.description
+                    updatedPost.createdAt shouldBe post.createdAt
+                    updatedPost.updatedAt shouldBeAfter post.updatedAt
                 }
             }
         }
@@ -115,7 +115,7 @@ class PostControllerTest(
             it("정상적으로 삭제된다.") {
                 val postCreateRequestDto = PostCreateRequestDto(title = "제목", description = "내용")
                 val post = postController.save(postCreateRequestDto).body ?: throw Error()
-                val postId = post.getId()
+                val postId = post.id
 
                 postController.deleteById(postId)
 
