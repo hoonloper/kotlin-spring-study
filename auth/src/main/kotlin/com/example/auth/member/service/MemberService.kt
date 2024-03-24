@@ -1,12 +1,17 @@
 package com.example.auth.member.service
 
+import com.example.auth.common.authority.JwtTokenProvider
+import com.example.auth.common.authority.TokenInfo
 import com.example.auth.common.exception.InvalidInputException
 import com.example.auth.common.status.ROLE
+import com.example.auth.member.dto.LoginDto
 import com.example.auth.member.dto.MemberDtoRequest
 import com.example.auth.member.entity.Member
 import com.example.auth.member.entity.MemberRole
 import com.example.auth.member.repository.MemberRepository
 import com.example.auth.member.repository.MemberRoleRepository
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
@@ -14,7 +19,9 @@ import org.springframework.transaction.annotation.Transactional
 @Service
 class MemberService (
     private val memberRepository: MemberRepository,
-    private val memberRoleRepository: MemberRoleRepository
+    private val memberRoleRepository: MemberRoleRepository,
+    private val authenticationManagerBuilder: AuthenticationManagerBuilder,
+    private val jwtTokenProvider: JwtTokenProvider
 ) {
     /**
      * 회원가입
@@ -34,5 +41,15 @@ class MemberService (
         memberRoleRepository.save(memberRole)
 
         return "회원가입이 완료되었습니다."
+    }
+
+    /**
+     * 로그인 -> 토큰 발행
+     */
+    fun login(loginDto: LoginDto): TokenInfo {
+        val authenticationToken = UsernamePasswordAuthenticationToken(loginDto.loginId, loginDto.password)
+        val authentication = authenticationManagerBuilder.`object`.authenticate(authenticationToken)
+
+        return jwtTokenProvider.createToken(authentication)
     }
 }
