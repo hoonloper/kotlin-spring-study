@@ -8,4 +8,12 @@ fun main(args: Array<String>) {
 
     var int: Int = 1 // 타입
     var str: String = "string" // 타입
+
+    // 형변환
+    var x = 10
+    var l = 20L // Long
+    // l = i 타입이 달라 할당 안됨
+    l = i.toLong() // 이건 됨
+
+
 }
