@@ -14,6 +14,7 @@ fun main(args: Array<String>) {
     var l = 20L // Long
     // l = i 타입이 달라 할당 안됨
     l = i.toLong() // 이건 됨
-
-
+    i = l.toInt()
+    str = i.toString()
+    i = str.toInt()
 }
