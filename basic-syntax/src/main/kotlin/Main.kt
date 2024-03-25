@@ -113,4 +113,15 @@ fun main(args: Array<String>) {
     value4?.let {
         value5 = value4
     }
+
+
+    // 함수
+    fun sum(a: Int, b: Int) : Int {
+        return a + b
+    }
+    fun sum2(a: Int, b: Int) = a + b // 한줄이면 생략 가능
+    // fun sum2(a: Int, b: Int, c: Int) = a + b + c // 오버로딩?
+    fun sum2(a: Int, b: Int, c: Int = 0) = a + b + c // 기본값 지정 가능
+    print(sum(1, 2))
+    print(sum(a = 10, b = 20))
 }
