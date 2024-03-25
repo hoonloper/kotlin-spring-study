@@ -43,4 +43,26 @@ fun main(args: Array<String>) {
     // 키보드 입력
     val reader = Scanner(System.`in`) // in은 코틀린에서 사용할 수 없고 이런것들은 ``이 붙음
     reader.next()
+
+    // if문
+    val q = 5
+    if (q > 5) {
+        print(q)
+    } else if (q > 3) {
+        print(q)
+    } else {
+        print(0)
+    }
+    when {
+        q > 5 -> { print(q) }
+        q > 3 -> { print(q) }
+        else -> { print(0) }
+    }
+    val returned = if (q > 5) {
+        q
+    } else if (q > 3) {
+        q
+    } else {
+        0
+    }
 }
