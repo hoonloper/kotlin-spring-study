@@ -85,4 +85,19 @@ fun main(args: Array<String>) {
     val values2 = mutableListOf(1, 2, 3, 4, 5) // 가변 리스트다
     values2.add(1)
     values2.remove(1)
+
+    // Array, 거의 사용 안함
+    val values3 = arrayOf(1, 2, 3)
+    values3.size
+    values3.get(0)
+    values3.set(2)
+    values3[0] = 10
+    values3[1] = 20
+
+    // 예외 처리
+    try {
+        val value = values3[4]
+    } catch (e: Exception) {
+        print(e.message)
+    }
 }
