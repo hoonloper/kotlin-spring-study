@@ -124,4 +124,40 @@ fun main(args: Array<String>) {
     fun sum2(a: Int, b: Int, c: Int = 0) = a + b + c // 기본값 지정 가능
     print(sum(1, 2))
     print(sum(a = 10, b = 20))
+
+    // 클래스
+    val john = Person("John", 20)
+    print(john.name + john.age)
+
+    val john2 = Person("John", 20)
+    print(john2.name + john2.age)
+    println(john)
+    println(john2)
+    println(john == john2)
+}
+
+//class Person (
+//    val name: String,
+//    val age: Int,
+//) {}
+data class Person (
+    val name: String,
+    val age: Int,
+)
+
+class Person2(
+    val name: String,
+    val age: Int
+) {
+    var hobby = "축구"
+        private set // 외부에서 set이 불가능해진다
+        get() = "취미 : $field" // 게터
+
+    init {
+        print("init")
+    }
+
+    fun some() {
+        hobby = "농구"
+    }
 }
