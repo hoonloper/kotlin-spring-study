@@ -134,6 +134,18 @@ fun main(args: Array<String>) {
     println(john)
     println(john2)
     println(john == john2)
+
+    // 타입 체크 is
+    val dog: Animal = Dog()
+    val cat: Animal = Cat()
+
+    if (dog is Dog) {
+        // Dog 타입을 통과했기에 draw, move 메서드 둘 다 사용 가능
+        print("멍멍이")
+    }
+    if (cat is Cat) {
+        print("고양이")
+    }
 }
 
 //class Person (
