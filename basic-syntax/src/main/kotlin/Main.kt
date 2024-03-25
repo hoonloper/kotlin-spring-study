@@ -1,5 +1,6 @@
 import kotlin.math.max
 import kotlin.math.min
+import kotlin.random.Random
 
 const val CONSTANT = 10 // Top Level 상수
 
@@ -32,4 +33,9 @@ fun main(args: Array<String>) {
     var m = 20
     print(max(n, m))
     print(min(n, m))
+
+    // random
+    // val randomNum = Random.nextInt()
+    val randomNum = Random.nextInt(0, 100) // 0 ~ 99
+    println(randomNum)
 }
