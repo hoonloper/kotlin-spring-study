@@ -161,3 +161,26 @@ class Person2(
         hobby = "농구"
     }
 }
+
+// 상속
+abstract class Animal {
+    open fun move() { // open으로 override 풀어주기
+        print("이동")
+    }
+}
+
+class Dog: Animal() {
+    override fun move() {
+        print("껑충")
+    }
+}
+
+class Cat: Animal() {
+    override fun move() {
+        print("살금")
+    }
+}
+
+open class Person() // 일반 클래스 상속 안됨(open을 붙여줘야함)
+
+class SuperMan : Person()
