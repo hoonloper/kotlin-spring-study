@@ -65,4 +65,18 @@ fun main(args: Array<String>) {
     } else {
         0
     }
+
+    // 반복문
+    val items = listOf(1, 2, 3, 4, 5)
+    for (item in items) {
+        print(item)
+    }
+    items.forEach { item ->
+        print(item)
+    }
+    for (i in 0..items.size - 1) {
+        print(i)
+        break
+        continue
+    }
 }
