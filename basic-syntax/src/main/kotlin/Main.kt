@@ -17,4 +17,10 @@ fun main(args: Array<String>) {
     i = l.toInt()
     str = i.toString()
     i = str.toInt()
+
+    // 문자열
+    var name = "hello"
+    print("이름" + name + "이다")
+    print("이름 $name 이다")
+    print("이름 ${name + "수식이 필요하면 이렇게"} 이다")
 }
