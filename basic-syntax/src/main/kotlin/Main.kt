@@ -208,3 +208,9 @@ class Cat: Animal(), Drawable {
 //open class Person() // 일반 클래스 상속 안됨(open을 붙여줘야함)
 //
 //class SuperMan : Person()
+
+
+// generic
+class Box<T>(val value: T)
+val box = Box<Int>(10)
+val box2 = Box<String>("str")
