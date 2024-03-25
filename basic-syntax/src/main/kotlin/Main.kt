@@ -169,18 +169,30 @@ abstract class Animal {
     }
 }
 
-class Dog: Animal() {
+interface Drawable {
+    fun draw()
+}
+
+class Dog: Animal(), Drawable {
     override fun move() {
         print("껑충")
     }
-}
 
-class Cat: Animal() {
-    override fun move() {
-        print("살금")
+    override fun draw() {
+        TODO("Not yet implemented")
     }
 }
 
-open class Person() // 일반 클래스 상속 안됨(open을 붙여줘야함)
+class Cat: Animal(), Drawable {
+    override fun move() {
+        print("살금")
+    }
 
-class SuperMan : Person()
+    override fun draw() {
+        TODO("Not yet implemented")
+    }
+}
+
+//open class Person() // 일반 클래스 상속 안됨(open을 붙여줘야함)
+//
+//class SuperMan : Person()
