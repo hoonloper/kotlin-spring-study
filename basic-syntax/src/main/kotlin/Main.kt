@@ -1,3 +1,4 @@
+import java.util.Scanner
 import kotlin.math.max
 import kotlin.math.min
 import kotlin.random.Random
@@ -38,4 +39,8 @@ fun main(args: Array<String>) {
     // val randomNum = Random.nextInt()
     val randomNum = Random.nextInt(0, 100) // 0 ~ 99
     println(randomNum)
+
+    // 키보드 입력
+    val reader = Scanner(System.`in`) // in은 코틀린에서 사용할 수 없고 이런것들은 ``이 붙음
+    reader.next()
 }
