@@ -1,3 +1,5 @@
+const val CONSTANT = 10 // Top Level 상수
+
 fun main(args: Array<String>) {
     println("Hello World!")
 
