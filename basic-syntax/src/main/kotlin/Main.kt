@@ -79,4 +79,10 @@ fun main(args: Array<String>) {
         break
         continue
     }
+
+    // 리스트
+    val values = listOf(1, 2, 3, 4, 5) // 불변 리스트다
+    val values2 = mutableListOf(1, 2, 3, 4, 5) // 가변 리스트다
+    values2.add(1)
+    values2.remove(1)
 }
