@@ -1,3 +1,6 @@
+import kotlin.math.max
+import kotlin.math.min
+
 const val CONSTANT = 10 // Top Level 상수
 
 fun main(args: Array<String>) {
@@ -23,4 +26,10 @@ fun main(args: Array<String>) {
     print("이름" + name + "이다")
     print("이름 $name 이다")
     print("이름 ${name + "수식이 필요하면 이렇게"} 이다")
+
+    // max, min
+    var n = 10
+    var m = 20
+    print(max(n, m))
+    print(min(n, m))
 }
