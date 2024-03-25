@@ -90,7 +90,7 @@ fun main(args: Array<String>) {
     val values3 = arrayOf(1, 2, 3)
     values3.size
     values3.get(0)
-    values3.set(2)
+    values3.set(2, 2)
     values3[0] = 10
     values3[1] = 20
 
@@ -99,5 +99,18 @@ fun main(args: Array<String>) {
         val value = values3[4]
     } catch (e: Exception) {
         print(e.message)
+    }
+
+    // Null Safety
+    var value4: String? = null
+    value4 = ""
+    value4 = null
+
+    var value5: String = ""
+    if (value4 != null) {
+        value5 = value4
+    }
+    value4?.let {
+        value5 = value4
     }
 }
