@@ -12,9 +12,12 @@ java {
     sourceCompatibility = JavaVersion.VERSION_17
 }
 
+val projectGroup: String by project
+val applicationVersion: String by project
+
 allprojects {
-    group = "io.study"
-    version = "0.0.1-SNAPSHOT"
+    group = projectGroup
+    version = applicationVersion
 
     repositories {
         mavenCentral()
