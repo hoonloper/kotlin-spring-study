@@ -1,7 +1,8 @@
 rootProject.name = "multi-module"
 
 include(
-    "multi-module-api"
+    "multi-module-api",
+    "support:logging"
 )
 
 pluginManagement {
