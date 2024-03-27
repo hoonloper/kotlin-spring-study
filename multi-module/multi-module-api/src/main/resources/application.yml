@@ -5,6 +5,7 @@ spring:
   config:
     import:
       - logging.yml
+      - db-main.yml
 
 ---
 spring.config.activate.on-profile: local
