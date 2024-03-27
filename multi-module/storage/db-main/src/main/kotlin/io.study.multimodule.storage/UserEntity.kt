@@ -1,3 +1,4 @@
+import jakarta.persistence.Entity
 
 @Entity
 internal class UserEntity(

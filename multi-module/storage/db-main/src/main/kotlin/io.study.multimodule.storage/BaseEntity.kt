@@ -1,3 +1,9 @@
+import jakarta.persistence.GeneratedValue
+import jakarta.persistence.GenerationType
+import jakarta.persistence.Id
+import jakarta.persistence.MappedSuperclass
+import org.hibernate.annotations.CreationTimestamp
+import org.hibernate.annotations.UpdateTimestamp
 import java.time.ZonedDateTime
 
 
@@ -11,6 +17,6 @@ internal abstract class BaseEntity {
     val createdAt: ZonedDateTime? = null
 
     @UpdateTimestamp
-    val updatedAt: ZonedDateTime? = null
+    var updatedAt: ZonedDateTime? = null
         protected set
 }
