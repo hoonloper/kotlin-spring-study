@@ -11,4 +11,8 @@ class UserService(
     fun getUsers(): MutableIterable<User> {
         return userRedisRepository.findAll()
     }
+
+    fun saveUser(user: User) {
+        userRedisRepository.save(user)
+    }
 }
