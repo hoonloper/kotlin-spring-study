@@ -11,7 +11,7 @@ class TicketEntity(
     var id: Long? = null,
 
     @Column
-    var currentCount: Long? = 0,
+    var currentCount: Long? = 1,
 
     @Column
     var maxCount: Long? = 5
