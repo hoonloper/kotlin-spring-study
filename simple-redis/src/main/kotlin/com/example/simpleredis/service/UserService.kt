@@ -1,18 +1,20 @@
 package com.example.simpleredis.service
 
-import com.example.simpleredis.hash.UserHash
+import com.example.simpleredis.entity.UserEntity
+import com.example.simpleredis.repository.UserJpaRepository
 import com.example.simpleredis.repository.UserRedisRepository
 import org.springframework.stereotype.Service
 
 @Service
 class UserService(
-    private val userRedisRepository: UserRedisRepository
+    private val userRedisRepository: UserRedisRepository,
+    private val userJpaRepository: UserJpaRepository
 ) {
-    fun getUsers(): MutableIterable<UserHash> {
-        return userRedisRepository.findAll()
+    fun getUsers(): List<UserEntity> {
+        return userJpaRepository.findAll()
     }
 
-    fun saveUser(user: UserHash) {
-        userRedisRepository.save(user)
+    fun saveUser(user: UserEntity) {
+        userJpaRepository.save(user)
     }
 }

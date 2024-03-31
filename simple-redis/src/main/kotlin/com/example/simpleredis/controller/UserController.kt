@@ -1,6 +1,6 @@
 package com.example.simpleredis.controller
 
-import com.example.simpleredis.hash.UserHash
+import com.example.simpleredis.entity.UserEntity
 import com.example.simpleredis.service.UserService
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
@@ -14,12 +14,12 @@ class UserController(
     private val userService: UserService
 ) {
     @GetMapping
-    fun getUsers(): MutableIterable<UserHash> {
+    fun getUsers(): List<UserEntity> {
         return userService.getUsers()
     }
 
     @PostMapping
-    fun saveUser(@RequestBody user: UserHash) {
+    fun saveUser(@RequestBody user: UserEntity) {
         userService.saveUser(user)
     }
 }
