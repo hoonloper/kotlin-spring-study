@@ -13,6 +13,18 @@ class TicketService(
     private val ticketJpaRepository: TicketJpaRepository,
     private val applyJpaRepository: ApplyJpaRepository
 ) {
+    fun getTickets(): List<TicketEntity> {
+        return ticketJpaRepository.findAll()
+    }
+
+    fun getAppliedTickets(): List<ApplyEntity> {
+        return applyJpaRepository.findAll()
+    }
+
+    fun addTicket(ticketDto: TicketDto) {
+        ticketJpaRepository.save(TicketEntity(currentCount = ticketDto.currentCount, maxCount = ticketDto.maxCount))
+    }
+
     fun applyTicket(userId: Long, ticketId: Long) {
         if (applyJpaRepository.existsByUserIdAndTicketId(userId, ticketId)) {
             throw Exception("이미 예매된 티켓")
@@ -25,13 +37,5 @@ class TicketService(
         ticket.increaseCount()
 
         applyJpaRepository.save(ApplyEntity(userId = userId, ticketId = ticketId))
-    }
-
-    fun getTickets(): List<TicketEntity> {
-        return ticketJpaRepository.findAll()
-    }
-
-    fun addTicket(ticketDto: TicketDto) {
-        ticketJpaRepository.save(TicketEntity(currentCount = ticketDto.currentCount, maxCount = ticketDto.maxCount))
     }
 }
