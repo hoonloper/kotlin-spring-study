@@ -1,6 +1,7 @@
 package com.example.simpleredis.controller
 
 import com.example.simpleredis.dto.TicketApplyDto
+import com.example.simpleredis.dto.TicketDto
 import com.example.simpleredis.entity.TicketEntity
 import com.example.simpleredis.service.TicketService
 import org.springframework.web.bind.annotation.GetMapping
@@ -19,6 +20,10 @@ class TicketController(
         return ticketService.getTickets()
     }
     @PostMapping
+    fun addTicket(@RequestBody ticketDto: TicketDto) {
+        ticketService.addTicket(ticketDto)
+    }
+    @PostMapping("/apply")
     fun applyTicket(@RequestBody ticketApplyDto: TicketApplyDto) {
         ticketService.applyTicket(ticketApplyDto.userId, ticketApplyDto.ticketId)
     }

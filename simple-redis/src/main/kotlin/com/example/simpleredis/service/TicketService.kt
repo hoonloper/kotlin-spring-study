@@ -1,5 +1,6 @@
 package com.example.simpleredis.service
 
+import com.example.simpleredis.dto.TicketDto
 import com.example.simpleredis.entity.ApplyEntity
 import com.example.simpleredis.entity.TicketEntity
 import com.example.simpleredis.repository.ApplyJpaRepository
@@ -28,5 +29,9 @@ class TicketService(
 
     fun getTickets(): List<TicketEntity> {
         return ticketJpaRepository.findAll()
+    }
+
+    fun addTicket(ticketDto: TicketDto) {
+        ticketJpaRepository.save(TicketEntity(currentCount = ticketDto.currentCount, maxCount = ticketDto.maxCount))
     }
 }
