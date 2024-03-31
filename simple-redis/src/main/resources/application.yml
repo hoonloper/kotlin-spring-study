@@ -1,6 +1,19 @@
 spring:
   application:
     name: simple-redis
+  jpa:
+    open-in-view: false
+    generate-ddl: true
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+  h2:
+    console:
+      enabled: true
   data:
     redis:
       host: 127.0.0.1

@@ -13,5 +13,13 @@ class TicketEntity(
     var currentCount: Long? = 0,
 
     @Column
-    var maxCount: Long? = 30
-): BaseEntity()
+    var maxCount: Long? = 5
+): BaseEntity() {
+    fun isDone(): Boolean {
+        return currentCount!! >= maxCount!!
+    }
+
+    fun increaseCount() {
+        currentCount = currentCount?.plus(1)
+    }
+}
