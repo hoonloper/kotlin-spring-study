@@ -5,6 +5,7 @@ import com.example.simpleredis.entity.ApplyEntity
 import com.example.simpleredis.entity.TicketEntity
 import com.example.simpleredis.repository.ApplyJpaRepository
 import com.example.simpleredis.repository.TicketJpaRepository
+import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 import java.lang.Exception
@@ -31,7 +32,8 @@ class TicketService(
         if (applyJpaRepository.existsByUserIdAndTicketId(userId, ticketId)) {
             throw Exception("이미 예매된 티켓")
         }
-        val ticket = ticketJpaRepository.findById(ticketId).orElseThrow()
+
+        val ticket = ticketJpaRepository.findByIdOrNull(ticketId) ?: throw Exception("티켓 없음")
         if (ticket.isDone()) {
             throw Exception("품절됨")
         }
