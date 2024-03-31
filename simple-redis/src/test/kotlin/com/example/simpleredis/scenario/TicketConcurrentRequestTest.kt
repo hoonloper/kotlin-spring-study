@@ -34,7 +34,7 @@ class TicketConcurrentRequestTest(
         objectMapper.registerModule(JavaTimeModule())
 
         // 새로운 Ticket 발행 ---------------------------------------------
-        val ticketDto = TicketDto(currentCount = 0, maxCount = 5)
+        val ticketDto = TicketDto(currentCount = 1, maxCount = 5)
         val serializedTicketDto = objectMapper.writeValueAsString(ticketDto)
 
         mvc.perform(post("/tickets")
@@ -105,6 +105,6 @@ class TicketConcurrentRequestTest(
         val appliedTicketCount = appliedTickets.count()
 
         // 발행한 Ticket 최대 개수와 예매된 티켓의 개수 비교 ---------------------------------------------
-        assertThat(appliedTicketCount).isEqualTo(ticket.maxCount)
+        assertThat(appliedTicketCount.toLong()).isEqualTo(ticket.maxCount)
     }
 }
