@@ -6,6 +6,7 @@ import com.example.simpleredis.entity.TicketEntity
 import com.example.simpleredis.repository.ApplyJpaRepository
 import com.example.simpleredis.repository.TicketJpaRepository
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
 import java.lang.Exception
 
 @Service
@@ -25,6 +26,7 @@ class TicketService(
         ticketJpaRepository.save(TicketEntity(currentCount = ticketDto.currentCount, maxCount = ticketDto.maxCount))
     }
 
+    @Transactional
     fun applyTicket(userId: Long, ticketId: Long) {
         if (applyJpaRepository.existsByUserIdAndTicketId(userId, ticketId)) {
             throw Exception("이미 예매된 티켓")
@@ -36,6 +38,7 @@ class TicketService(
 
         ticket.increaseCount()
 
+        ticketJpaRepository.save(ticket)
         applyJpaRepository.save(ApplyEntity(userId = userId, ticketId = ticketId))
     }
 }
