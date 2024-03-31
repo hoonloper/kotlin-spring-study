@@ -1,10 +1,10 @@
-package com.example.simpleredis.entity
+package com.example.simpleredis.hash
 
 import jakarta.persistence.Id
 import org.springframework.data.redis.core.RedisHash
 
 @RedisHash("user")
-class User (
+class UserHash (
     @Id
     val id: String? = null,
     val name: String? = null,

@@ -1,9 +1,9 @@
 package com.example.simpleredis.repository
 
-import com.example.simpleredis.entity.User
+import com.example.simpleredis.hash.UserHash
 import org.springframework.data.repository.CrudRepository
 import org.springframework.stereotype.Repository
 
 @Repository
-interface UserRedisRepository: CrudRepository<User, Long> {
+interface UserRedisRepository: CrudRepository<UserHash, Long> {
 }
