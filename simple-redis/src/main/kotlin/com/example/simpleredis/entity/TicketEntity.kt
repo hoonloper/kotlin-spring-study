@@ -1,5 +1,6 @@
 package com.example.simpleredis.entity
 
+import com.fasterxml.jackson.annotation.JsonIgnore
 import jakarta.persistence.*
 
 @Entity
@@ -15,6 +16,7 @@ class TicketEntity(
     @Column
     var maxCount: Long? = 5
 ): BaseEntity() {
+    @JsonIgnore
     fun isDone(): Boolean {
         return currentCount!! >= maxCount!!
     }
