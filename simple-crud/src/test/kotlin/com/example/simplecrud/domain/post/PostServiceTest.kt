@@ -3,6 +3,7 @@ package com.example.simplecrud.domain.post
 import com.example.simplecrud.domain.post.dto.PostCreateRequestDto
 import com.example.simplecrud.domain.post.dto.PostUpdateRequestDto
 import io.kotest.assertions.throwables.shouldThrow
+import io.kotest.core.spec.style.BehaviorSpec
 import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.extensions.spring.SpringExtension
 import io.kotest.matchers.date.shouldBeAfter
@@ -10,10 +11,45 @@ import io.kotest.matchers.date.shouldBeBefore
 import io.kotest.matchers.longs.shouldBeGreaterThan
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
+import org.mockito.BDDMockito
+import org.mockito.BDDMockito.given
+import org.mockito.BDDMockito.then
+import org.mockito.Mockito.`when`
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.transaction.annotation.Transactional
 import java.time.LocalDateTime
 
+
+@Transactional
+@SpringBootTest
+class PostServiceBehaviorTest(
+    private val postService: PostService
+): BehaviorSpec({
+    given("조회") {
+        `when`("Post가 존재하면") {
+            val postCreateRequestDto = PostCreateRequestDto(title = "제목", description = "내용")
+            val postCreateRequestDtoList = List(5) {
+                postService.save(postCreateRequestDto)
+            }
+
+            then("Post 목록을 응답한다.") {
+                val posts = postService.getPosts()
+
+                posts.forEachIndexed { index, post ->
+                    val expectedPost = postCreateRequestDtoList[index]
+
+                    expectedPost shouldNotBe null
+
+                    post.id shouldBe expectedPost.id
+                    post.title shouldBe expectedPost.title
+                    post.description shouldBe expectedPost.description
+                    post.createdAt.isEqual(expectedPost.createdAt) shouldBe true
+                    post.updatedAt.isEqual(expectedPost.updatedAt) shouldBe true
+                }
+            }
+        }
+    }
+})
 
 @Transactional
 @SpringBootTest
