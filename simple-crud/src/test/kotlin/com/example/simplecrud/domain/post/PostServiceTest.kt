@@ -56,6 +56,24 @@ class PostServiceBehaviorTest(
             }
         }
     }
+
+    given("Post 정보를") {
+        `when`("저장할 때") {
+            val postDto = PostCreateRequestDto(title = "제목", description = "내용")
+
+            then("정상적으로 동작한다.") {
+                val savedPost = postService.save(postDto)
+
+                savedPost shouldNotBe null
+
+                savedPost.id shouldBeGreaterThan 0
+                savedPost.title shouldBe postDto.title
+                savedPost.description shouldBe postDto.description
+                savedPost.createdAt shouldBeBefore LocalDateTime.now()
+                savedPost.updatedAt shouldBeBefore LocalDateTime.now()
+            }
+        }
+    }
 })
 
 //@Transactional
