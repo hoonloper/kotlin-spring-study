@@ -32,7 +32,6 @@ class PostRequestTest(
                     .contentType(MediaType.APPLICATION_JSON)
                 )
                     .andExpect(status().isCreated)
-                    .andReturn()
             }
         }
     }
