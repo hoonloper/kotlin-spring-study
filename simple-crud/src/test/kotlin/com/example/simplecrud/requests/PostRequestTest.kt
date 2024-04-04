@@ -21,11 +21,14 @@ class PostRequestTest(
     describe("POST /posts") {
         context("Body를 포함해 요청을 보내면") {
             it("정상적으로 저장된다.") {
+                // given
                 val postCreateRequestDto = PostCreateRequestDto(title = "제목", description = "내용")
 
+                // when
                 val objectMapper = ObjectMapper()
                 val body = objectMapper.writeValueAsString(postCreateRequestDto)
 
+                // then
                 mockMvc.perform(
                     post("/posts")
                     .content(body)
