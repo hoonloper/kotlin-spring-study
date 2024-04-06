@@ -7,11 +7,11 @@ fun main() {
     val c= 3
 
     var e: Int
-    println(e)
+//    println(e)
 
     val d: Int
 
-    if (someCondition()) {
+    if (1 < 2) {
         d = 1
     } else {
         d = 2
