@@ -219,6 +219,6 @@ fun myFunc(callback: () -> Unit) {
     callback()
 }
 
-myFunc({ println("함수 호출") })
-myFunc { println("함수 호출") }
-myFunc() { println("함수 호출") } // 콜백함수는 우측에 작성
+//myFunc({ println("함수 호출") })
+//myFunc { println("함수 호출") }
+//myFunc() { println("함수 호출") } // 콜백함수는 우측에 작성
