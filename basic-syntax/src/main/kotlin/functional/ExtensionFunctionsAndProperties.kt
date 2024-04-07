@@ -1,4 +1,4 @@
-package Functional
+package functional
 
 data class Item(val name: String, val price: Float)
 
