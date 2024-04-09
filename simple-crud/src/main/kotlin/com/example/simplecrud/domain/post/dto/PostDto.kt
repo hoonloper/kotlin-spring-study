@@ -11,10 +11,10 @@ data class PostDto(
     val updatedAt: LocalDateTime
 ) {
     constructor(post: Post) : this(
-        post.id!!,
-        post.title,
-        post.description,
-        post.createdAt,
-        post.updatedAt
+        id = post.id!!,
+        title = post.title,
+        description = post.description,
+        createdAt = post.createdAt,
+        updatedAt = post.updatedAt
     )
 }
