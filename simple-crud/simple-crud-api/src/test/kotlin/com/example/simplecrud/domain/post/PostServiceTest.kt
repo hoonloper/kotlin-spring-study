@@ -1,12 +1,8 @@
 package com.example.simplecrud.domain.post
 
 import com.example.simplecrud.domain.post.dto.PostCreateRequestDto
-import com.example.simplecrud.domain.post.dto.PostUpdateRequestDto
-import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.BehaviorSpec
-import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.extensions.spring.SpringExtension
-import io.kotest.matchers.date.shouldBeAfter
 import io.kotest.matchers.date.shouldBeBefore
 import io.kotest.matchers.longs.shouldBeGreaterThan
 import io.kotest.matchers.shouldBe
