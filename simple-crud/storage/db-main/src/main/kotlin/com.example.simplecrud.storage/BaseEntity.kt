@@ -1,4 +1,4 @@
-package com.example.simplecrud.domain.common
+package com.example.simplecrud.storage
 
 import jakarta.persistence.*;
 import org.springframework.data.annotation.CreatedDate;

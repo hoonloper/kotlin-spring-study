@@ -1,8 +1,7 @@
-package com.example.simplecrud.domain.post
+package com.example.simplecrud.storage
 
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
 
 @Repository
-interface PostRepository: JpaRepository<Post, Long> {
-}
+internal interface PostJpaRepository: JpaRepository<Post, Long>

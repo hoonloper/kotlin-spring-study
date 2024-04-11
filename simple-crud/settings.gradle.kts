@@ -1,7 +1,8 @@
 rootProject.name = "simple-crud"
 
 include(
-    "simple-crud-api"
+    "simple-crud-api",
+    "storage:db-main"
 )
 
 pluginManagement {

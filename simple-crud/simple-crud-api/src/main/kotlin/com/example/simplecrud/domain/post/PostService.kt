@@ -4,10 +4,11 @@ import com.example.simplecrud.domain.post.dto.PostCreateRequestDto
 import com.example.simplecrud.domain.post.dto.PostDto
 import com.example.simplecrud.domain.post.dto.PostUpdateRequestDto
 import org.springframework.stereotype.Service
+import java.time.LocalDateTime
 
 @Service
 class PostService(
-    private val postRepository: PostRepository
+    private val postRepository: PostJpaRespotiroy
 ) {
     fun getPosts(): List<PostDto> {
         val posts = postRepository.findAll()
@@ -30,7 +31,9 @@ class PostService(
     fun updateById(postId: Long, postUpdateRequestDto: PostUpdateRequestDto) {
         val post = postRepository.findById(postId).orElseThrow()
 
-        post.update(postUpdateRequestDto)
+        post.title = postUpdateRequestDto.title
+        post.description = postUpdateRequestDto.description
+        post.updatedAt = LocalDateTime.now()
 
         postRepository.save(post)
     }
