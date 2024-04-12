@@ -31,11 +31,6 @@ subprojects {
     apply(plugin = "io.spring.dependency-management")
 
     dependencyManagement {
-
-//        val springCloudDependenciesVersion: String by project
-//        imports {
-//            mavenBom("org.springframework.cloud:spring-cloud-dependencies:${springCloudDependenciesVersion}")
-//        }
     }
 
     dependencies {
