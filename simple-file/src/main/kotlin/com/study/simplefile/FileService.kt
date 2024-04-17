@@ -1,10 +1,10 @@
 package com.study.simplefile
 
-import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Service
 import org.springframework.web.multipart.MultipartFile
 import java.io.File
-import java.time.LocalDateTime
+import java.time.Instant
+import java.time.ZoneId
 
 const val UPLOAD_ROOT_PATH = "uploads"
 
@@ -15,10 +15,8 @@ class FileService(
     fun getAllImages(): MutableList<FileEntity> = fileRepository.findAll()
 
     fun save(img: MultipartFile): String {
-        // 파일 이름을 임의로 생성합니다. 중복을 피하기 위해 UUID를 사용할 수도 있습니다.
-        val imgName = getImgName(img)
-
         val directory = getDirectory()
+        val imgName = getImgName(img)
         val imgPath = File(directory.absolutePath + File.separator + imgName)
 
         img.transferTo(imgPath)
@@ -27,7 +25,7 @@ class FileService(
             name = imgName,
             path = imgPath.path,
             size = img.size,
-            createdDate = LocalDateTime.now()
+            createdDate = getCreatedDateFromImg(imgPath).atZone(ZoneId.systemDefault())
         )
 
         fileRepository.save(fileEntity)
@@ -46,4 +44,6 @@ class FileService(
     }
 
     private fun getImgName(img: MultipartFile) = "${System.currentTimeMillis()}_${img.originalFilename}"
+
+    private fun getCreatedDateFromImg(imgPath: File) = Instant.ofEpochMilli(imgPath.lastModified())
 }

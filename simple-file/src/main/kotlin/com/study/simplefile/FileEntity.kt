@@ -8,12 +8,11 @@ import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
 import jakarta.persistence.MappedSuperclass
 import jakarta.persistence.Table
-import org.hibernate.annotations.CreationTimestamp
-import org.hibernate.annotations.UpdateTimestamp
 import org.springframework.data.annotation.CreatedDate
 import org.springframework.data.annotation.LastModifiedDate
 import org.springframework.data.jpa.domain.support.AuditingEntityListener
 import java.time.LocalDateTime
+import java.time.ZonedDateTime
 
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener::class)
@@ -36,7 +35,7 @@ class FileEntity(
     name: String,
     path: String,
     size: Long,
-    createdDate: LocalDateTime
+    createdDate: ZonedDateTime
 ): BaseTimeEntity() {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -52,5 +51,5 @@ class FileEntity(
     val size: Long = size
 
     @Column
-    val createdDate: LocalDateTime = createdDate
+    val createdDate: ZonedDateTime = createdDate
 }
