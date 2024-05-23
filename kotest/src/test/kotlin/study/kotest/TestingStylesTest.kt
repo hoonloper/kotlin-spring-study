@@ -111,3 +111,17 @@ class FreeSpecTest : FreeSpec({
         }
     }
 })
+
+class FeatureSpecTest : FeatureSpec({
+    feature("더하기") {
+        scenario("1과 1을 더하면 2가 된다") {
+            1 + 1 shouldBe 2
+        }
+    }
+
+    xfeature("feature 실행 X") {
+        xscenario("xscenario 실행 X") {
+            // ...
+        }
+    }
+})
