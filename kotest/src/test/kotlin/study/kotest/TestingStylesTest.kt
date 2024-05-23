@@ -1,5 +1,6 @@
 package study.kotest
 
+import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.core.spec.style.ShouldSpec
 import io.kotest.core.spec.style.StringSpec
@@ -45,6 +46,26 @@ class ShouldSpecTest : ShouldSpec({
         // ...
     }
     xshould("should 실행 X") {
+        // ...
+    }
+})
+
+class DescribeSpecTest : DescribeSpec({
+    describe("더하기") {
+        context("1 + 1") {
+            it("= 2") {
+                1 + 1 shouldBe 2
+            }
+        }
+    }
+
+    xdescribe("describe 실행 x") {
+        // ...
+    }
+    xcontext("context 실행 X") {
+        // ...
+    }
+    xit("should 실행 X") {
         // ...
     }
 })
