@@ -1,9 +1,6 @@
 package study.kotest
 
-import io.kotest.core.spec.style.DescribeSpec
-import io.kotest.core.spec.style.FunSpec
-import io.kotest.core.spec.style.ShouldSpec
-import io.kotest.core.spec.style.StringSpec
+import io.kotest.core.spec.style.*
 import io.kotest.matchers.shouldBe
 
 class TestingStyles
@@ -67,5 +64,32 @@ class DescribeSpecTest : DescribeSpec({
     }
     xit("should 실행 X") {
         // ...
+    }
+})
+
+class BehaviorSpecTest : BehaviorSpec({
+    given("1과 1이") {
+        val one1 = 1
+        val one2 = 1
+        and("주어지고") {
+            `when`("그 둘을 더하려고") {
+                and("하고") {
+                    then("결과는 2가 된다") {
+                        one1 + one2 shouldBe 2
+                    }
+                }
+            }
+        }
+    }
+    Given("1") {
+        And("2") {
+            When("3") {
+                And("4") {
+                    Then("5") {
+                        // ...
+                    }
+                }
+            }
+        }
     }
 })
