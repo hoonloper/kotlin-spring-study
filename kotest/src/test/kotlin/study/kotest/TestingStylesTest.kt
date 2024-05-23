@@ -23,3 +23,9 @@ class FunSpecTest : FunSpec({
         // TODO로 남겨두거나 깨지는 테스트 일시적 비활성화로 좋을듯!
     }
 })
+
+class StringSpecTest : StringSpec({
+    "1 + 1 = 2" {
+        1 + 1 shouldBe 2
+    }
+})
