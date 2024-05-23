@@ -103,3 +103,11 @@ class WordSpecTest : WordSpec({
         }
     }
 })
+
+class FreeSpecTest : FreeSpec({
+    "1 더하기 1은" - {
+        "2가 나오길 기대하고 있다" {
+            1 + 1 shouldBe 2
+        }
+    }
+})
