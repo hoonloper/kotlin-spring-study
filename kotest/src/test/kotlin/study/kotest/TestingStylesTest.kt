@@ -93,3 +93,13 @@ class BehaviorSpecTest : BehaviorSpec({
         }
     }
 })
+
+class WordSpecTest : WordSpec({
+    "2" When {
+        "1 + 1" should {
+            "return 2" {
+                1 + 1 shouldBe 2
+            }
+        }
+    }
+})
