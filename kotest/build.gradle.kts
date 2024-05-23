@@ -24,6 +24,14 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+
+    // kotest
+    testImplementation("io.kotest:kotest-runner-junit5")
+    testImplementation("io.kotest:kotest-assertions-core")
+    testImplementation("io.kotest.extensions:kotest-extensions-spring")
+
+    // mockk
+    testImplementation("io.mockk:mockk")
 }
 
 tasks.withType<KotlinCompile> {
