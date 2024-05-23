@@ -125,3 +125,17 @@ class FeatureSpecTest : FeatureSpec({
         }
     }
 })
+
+class ExpectSpecTest : ExpectSpec({
+    context("1과 1을 더하면") {
+        expect("2가 예상된다") {
+            1 + 1 shouldBe 2
+        }
+    }
+    xcontext("context 실행 X") {
+        // ...
+    }
+    xexpect("expect 실행 X") {
+        // ...
+    }
+})
