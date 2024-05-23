@@ -1,6 +1,7 @@
 package study.kotest
 
 import io.kotest.core.spec.style.FunSpec
+import io.kotest.core.spec.style.ShouldSpec
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
 
@@ -27,5 +28,23 @@ class FunSpecTest : FunSpec({
 class StringSpecTest : StringSpec({
     "1 + 1 = 2" {
         1 + 1 shouldBe 2
+    }
+})
+
+class ShouldSpecTest : ShouldSpec({
+    should("1 + 1 = 2") {
+        1 + 1 shouldBe 2
+    }
+
+    context("1과 1을 더하면") {
+        should("2가 된다") {
+            1 + 1 shouldBe 2
+        }
+    }
+    xcontext("context 실행 X") {
+        // ...
+    }
+    xshould("should 실행 X") {
+        // ...
     }
 })
