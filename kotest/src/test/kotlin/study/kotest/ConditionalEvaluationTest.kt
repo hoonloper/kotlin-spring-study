@@ -1,10 +1,15 @@
 package study.kotest;
 
+import io.kotest.core.annotation.EnabledCondition
+import io.kotest.core.annotation.EnabledIf
+import io.kotest.core.spec.Spec
+import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.core.test.Enabled
-import io.kotest.core.test.EnabledIf
+//import io.kotest.core.test.EnabledIf
 import io.kotest.core.test.TestCase
+import kotlin.reflect.KClass
 
 class ConditionalEvaluationTest {}
 
@@ -99,3 +104,27 @@ class BangTest : StringSpec({
         // executed
     }
 })
+
+class LinuxOnlyCondition : EnabledCondition {
+    val IS_OS_LINUX = true
+
+    override fun enabled(kclass: KClass<out Spec>): Boolean = when {
+        kclass.simpleName?.contains("Linux") == true -> IS_OS_LINUX
+        else -> true // non Linux tests always run
+    }
+}
+
+@EnabledIf(LinuxOnlyCondition::class)
+class MyLinuxTest1 : FunSpec() {
+    // tests here
+}
+
+@EnabledIf(LinuxOnlyCondition::class)
+class MyLinuxTest2 : DescribeSpec() {
+    // tests here
+}
+
+@EnabledIf(LinuxOnlyCondition::class)
+class MyWindowsTests : DescribeSpec() {
+    // tests here
+}
