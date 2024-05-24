@@ -30,3 +30,20 @@ class EnabledIfTest : StringSpec({
     }
 })
 
+class EnabledOrReasonIfTest : StringSpec({
+    val disableDangerOnFridays: (TestCase) -> Enabled = {
+        if (it.name.testName.startsWith("skip")) {
+            Enabled.disabled("skip으로 시작해서 테스트 실행 안함")
+        } else {
+            Enabled.enabled
+        }
+    }
+
+    "skip 테스트".config(enabledOrReasonIf = disableDangerOnFridays) {
+        // test here
+    }
+
+    "run 테스트".config(enabledOrReasonIf = disableDangerOnFridays) {
+        // test here
+    }
+})
