@@ -18,3 +18,15 @@ class EnabledTest : StringSpec({
     }
 })
 
+class EnabledIfTest : StringSpec({
+    val disableSkip: EnabledIf = { !it.name.testName.startsWith("skip") }
+
+    "skip 테스트".config(enabledIf = disableSkip) {
+        // ...
+    }
+
+    "run 테스트".config(enabledIf = disableSkip) {
+        // ...
+    }
+})
+
