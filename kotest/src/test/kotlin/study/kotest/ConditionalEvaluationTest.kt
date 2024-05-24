@@ -86,4 +86,16 @@ class FocusFunTest : FunSpec({
     }
 })
 
+class BangTest : StringSpec({
+    "!test 1" {
+        // skipped
+    }
 
+    "test 2" {
+        // executed
+    }
+
+    "test 3" {
+        // executed
+    }
+})
