@@ -1,5 +1,6 @@
 package study.kotest;
 
+import io.kotest.core.spec.style.FunSpec
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.core.test.Enabled
 import io.kotest.core.test.EnabledIf
@@ -47,3 +48,42 @@ class EnabledOrReasonIfTest : StringSpec({
         // test here
     }
 })
+
+class FocusStringTest : StringSpec({
+    "test 1" {
+        // skipped
+    }
+
+    "f:test 2" {
+        // executed
+    }
+
+    "test 3" {
+        // skipped
+    }
+})
+
+class FocusFunTest : FunSpec({
+    context("test 1") {
+        // skipped
+        test("foo") {
+            // skipped
+        }
+    }
+
+    context("f:test 2") {
+        // executed
+        test("foo") {
+            // executed
+        }
+    }
+
+    context("test 3") {
+        // skipped
+        test("foo") {
+            // skipped
+        }
+    }
+})
+
+
