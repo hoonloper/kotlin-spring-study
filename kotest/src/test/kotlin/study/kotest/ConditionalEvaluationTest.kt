@@ -7,7 +7,6 @@ import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.core.test.Enabled
-//import io.kotest.core.test.EnabledIf
 import io.kotest.core.test.TestCase
 import kotlin.reflect.KClass
 
@@ -25,7 +24,7 @@ class EnabledTest : StringSpec({
 })
 
 class EnabledIfTest : StringSpec({
-    val disableSkip: EnabledIf = { !it.name.testName.startsWith("skip") }
+    val disableSkip: io.kotest.core.test.EnabledIf = { !it.name.testName.startsWith("skip") }
 
     "skip 테스트".config(enabledIf = disableSkip) {
         // ...
