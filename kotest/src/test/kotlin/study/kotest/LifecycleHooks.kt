@@ -3,6 +3,7 @@ package study.kotest
 import io.kotest.assertions.fail
 import io.kotest.core.spec.BeforeTest
 import io.kotest.core.spec.style.WordSpec
+import io.kotest.core.test.TestCase
 
 class LifecycleHooks
 
@@ -45,3 +46,17 @@ class SecondTest : WordSpec({
         }
     }
 })
+
+class OverridingTest : WordSpec() {
+    override suspend fun beforeTest(testCase: TestCase) {
+        println("before test $testCase")
+    }
+
+    init {
+        "테스트" should {
+            "실행" {
+                println("!!!!")
+            }
+        }
+    }
+}
