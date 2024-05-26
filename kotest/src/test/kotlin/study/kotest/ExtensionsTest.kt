@@ -1,6 +1,9 @@
 package study.kotest
 
+import io.kotest.core.annotation.AutoScan
+import io.kotest.core.listeners.AfterProjectListener
 import io.kotest.core.listeners.AfterSpecListener
+import io.kotest.core.listeners.BeforeProjectListener
 import io.kotest.core.listeners.BeforeSpecListener
 import io.kotest.core.spec.Spec
 import io.kotest.core.spec.style.WordSpec
@@ -24,3 +27,14 @@ class ExtensionTest : WordSpec({
         println("실행 완료!")
     }
 })
+
+@AutoScan
+object MyProjectListener : BeforeProjectListener, AfterProjectListener {
+    override suspend fun beforeProject() {
+        println("Project starting")
+    }
+
+    override suspend fun afterProject() {
+        println("Project complete")
+    }
+}
