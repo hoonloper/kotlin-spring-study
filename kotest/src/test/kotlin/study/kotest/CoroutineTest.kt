@@ -45,6 +45,32 @@ class TestDispatcherTest : FunSpec() {
     }
 }
 
+//class ProjectConfig : AbstractProjectConfig() {
+//    override var coroutineTestScope = true
+//}
+
+//class CoroutineDebugging : FunSpec() {
+//    init {
+//        test("foo").config(coroutineDebugProbes = true) {
+//            // someMethodThatLaunchesACoroutine() // launches a new coroutine
+//        }
+//    }
+//}
+
+class CoroutineDebugging : FunSpec() {
+    init {
+        coroutineDebugProbes = true
+
+        test("foo") {
+            // debugging enabled here
+        }
+
+        test("bar") {
+            // debugging enabled here
+        }
+    }
+}
+
 class ProjectConfig : AbstractProjectConfig() {
-    override var coroutineTestScope = true
+    override val coroutineDebugProbes = true
 }
