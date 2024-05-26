@@ -6,7 +6,9 @@ import io.kotest.core.listeners.AfterSpecListener
 import io.kotest.core.listeners.BeforeProjectListener
 import io.kotest.core.listeners.BeforeSpecListener
 import io.kotest.core.spec.Spec
+import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.core.spec.style.WordSpec
+import io.kotest.extensions.system.NoSystemOutListener
 
 class ExtensionsTest
 
@@ -38,3 +40,13 @@ object MyProjectListener : BeforeProjectListener, AfterProjectListener {
         println("Project complete")
     }
 }
+
+class NoSystemOutListenerTest : DescribeSpec({
+    listener(NoSystemOutListener)
+
+    describe("모든 테스트는 System out 사용하지 않아야 한다") {
+        it("사용하게 되면") {
+            println("실패한다!") // failure
+        }
+    }
+})
