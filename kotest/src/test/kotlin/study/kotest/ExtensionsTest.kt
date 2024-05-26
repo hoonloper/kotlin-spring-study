@@ -1,14 +1,17 @@
 package study.kotest
 
 import io.kotest.core.annotation.AutoScan
-import io.kotest.core.listeners.AfterProjectListener
-import io.kotest.core.listeners.AfterSpecListener
-import io.kotest.core.listeners.BeforeProjectListener
-import io.kotest.core.listeners.BeforeSpecListener
+import io.kotest.core.config.AbstractProjectConfig
+import io.kotest.core.extensions.Extension
+import io.kotest.core.listeners.*
 import io.kotest.core.spec.Spec
 import io.kotest.core.spec.style.DescribeSpec
+import io.kotest.core.spec.style.FunSpec
 import io.kotest.core.spec.style.WordSpec
+import io.kotest.core.test.TestCase
+import io.kotest.core.test.TestResult
 import io.kotest.extensions.system.NoSystemOutListener
+import io.kotest.matchers.shouldBe
 
 class ExtensionsTest
 
@@ -50,3 +53,38 @@ class NoSystemOutListenerTest : DescribeSpec({
         }
     }
 })
+
+object TimerListener : BeforeTestListener, AfterTestListener {
+    private var started = 0L
+
+    override suspend fun beforeTest(testCase: TestCase) {
+        started = System.currentTimeMillis()
+    }
+
+    override suspend fun afterTest(
+        testCase: TestCase,
+        result: TestResult,
+    ) {
+        println("Duration of ${testCase.descriptor}" + "\ntime = " + (System.currentTimeMillis() - started))
+    }
+}
+
+class TimerListenerTest : FunSpec({
+    extensions(TimerListener)
+
+    test("1_000_000번 문자열을 더하면 정상적으로 더해진다.") {
+        val len = 1_000_000
+        val str = "a"
+
+        var result = ""
+        for (i: Int in 1..len) {
+            result += str
+        }
+
+        result shouldBe str.repeat(len)
+    }
+})
+
+object MyConfig : AbstractProjectConfig() {
+    override fun extensions(): List<Extension> = listOf(TimerListener)
+}
