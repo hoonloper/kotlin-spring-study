@@ -6,6 +6,13 @@ fun main() {
     val goldFishCage = Cage2<GoldFish>()
     goldFishCage.put(GoldFish("금붕어"))
     // goldFishCage.moveTo(fishCage) // 타입 미스 매치 에러!!
+
+    /**
+     * out - (함수 파라미터 입장에서의) 생산자, 공변
+     * in - (함수 파라미터 입장에서의) 소비자, 반공변
+     */
+    val cage1: Cage2<out Fish> = Cage2<GoldFish>()
+    val cage2: Cage2<in GoldFish> = Cage2<Fish>()
 }
 class Cage2<T> {
     private val animals: MutableList<T> = mutableListOf()
