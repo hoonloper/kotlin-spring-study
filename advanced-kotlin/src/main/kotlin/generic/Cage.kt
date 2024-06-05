@@ -40,6 +40,11 @@ fun main() {
      * List<String> strs = List.of("A", "B", "C")
      * List<Object> objs = strs // 에러발생!! List 제네릭은 무공변하게 만들었다!
      */
+
+    // 제네릭 앞에 out을 붙여줌으로써 무공변에 변성을 준다.
+    // 변성을 주었기에 variance(변성) annotation이라 한다.
+    fishCage.moveFrom(goldFishCage)
+    val fish: Fish = fishCage.getFirst()
 }
 
 class Cage {
