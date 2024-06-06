@@ -37,6 +37,8 @@ class PersonLazy2 {
 //        }
 
     // by lazy - 코틀린에서 지원하는 backing property
+    // by - 코틀린에 존재하는 키워드, name의 getter를 lazy 객체의 getter랑 이어줌
+    // by 뒤에 위치한 객체는 getValue()와 setValue()를 가지고 있어야 하는 약속이다
     val name: String by lazy {
         Thread.sleep(2_000)
         "김수한무"

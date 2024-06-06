@@ -26,3 +26,5 @@ W
 'src/main/kotlin/lateinit_lazy/Person.kt,6/1/61c6641aa15a5b9f81b975647658b71a6d9ec3b4
 [
 +src/test/kotlin/lateinit_lazy/PersonTest.kt,5/5/5536daf0e467a98c857458e0fd1c2cc4ba3b955a
+X
+(src/main/kotlin/lateinit_lazy/Person3.kt,7/b/7b562203cfed7f0bf43d995ec2418e79020af0b6
