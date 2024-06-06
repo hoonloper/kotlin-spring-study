@@ -30,3 +30,5 @@ X
 (src/main/kotlin/lateinit_lazy/Person3.kt,7/b/7b562203cfed7f0bf43d995ec2418e79020af0b6
 \
 ,src/main/kotlin/lateinit_lazy/DelegateFun.kt,7/3/73fff84bdae9d417bf68a22ecd20ea234214208e
+]
+-src/main/kotlin/lateinit_lazy/ReadProperty.kt,c/d/cd4d0a873a414364d696ac23bd89568fcd58955c
