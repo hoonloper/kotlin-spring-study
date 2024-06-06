@@ -18,3 +18,5 @@ P
  src/main/kotlin/generic/Cage3.kt,0/0/0089f9c233bf1ba0592af7d47cd5a87d1a5f301b
 P
  src/main/kotlin/generic/Cage4.kt,c/7/c77bcb09aa5ac63158827bef815654440540cfca
+P
+ src/main/kotlin/generic/Cage5.kt,3/4/342dec18c3bd6444091b75293391a517322ae5d9

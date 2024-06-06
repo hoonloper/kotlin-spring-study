@@ -14,7 +14,7 @@ fun main() {
     val cage1: Cage2<out Fish> = Cage2<GoldFish>()
     val cage2: Cage2<in GoldFish> = Cage2<Fish>()
 }
-class Cage2<T> {
+class Cage2<T : Any> {
     private val animals: MutableList<T> = mutableListOf()
 
     fun getFirst(): T {
