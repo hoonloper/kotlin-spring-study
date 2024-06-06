@@ -32,3 +32,9 @@ X
 ,src/main/kotlin/lateinit_lazy/DelegateFun.kt,7/3/73fff84bdae9d417bf68a22ecd20ea234214208e
 ]
 -src/main/kotlin/lateinit_lazy/ReadProperty.kt,c/d/cd4d0a873a414364d696ac23bd89568fcd58955c
+Y
+)src/main/kotlin/lateinit_lazy/Sequence.kt,1/f/1f71e655b3f851a491384435e87a0ba657162e46
+@
+build.gradle.kts,d/b/dbcff70658daf80b53ce624f6adcaa529df5ed8d
+V
+&src/jmh/kotlin/example/SequenceTest.kt,7/d/7ddd55e37da581fce4cc32fc809264de6c11eead

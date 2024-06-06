@@ -1,6 +1,7 @@
 plugins {
     kotlin("jvm") version "1.9.0"
     application
+    id("me.champeau.jmh") version "0.7.0"
 }
 
 group = "org.example"
@@ -24,4 +25,11 @@ kotlin {
 
 application {
     mainClass.set("MainKt")
+}
+
+jmh {
+    threads = 1
+    fork = 1
+    warmupIterations = 1
+    iterations = 1
 }
