@@ -22,3 +22,7 @@ P
  src/main/kotlin/generic/Cage5.kt,3/4/342dec18c3bd6444091b75293391a517322ae5d9
 T
 $src/main/kotlin/generic/TypeErase.kt,e/5/e562f32456fe6618d42f75a5b52ba7fb17448164
+W
+'src/main/kotlin/lateinit_lazy/Person.kt,6/1/61c6641aa15a5b9f81b975647658b71a6d9ec3b4
+[
++src/test/kotlin/lateinit_lazy/PersonTest.kt,5/5/5536daf0e467a98c857458e0fd1c2cc4ba3b955a
