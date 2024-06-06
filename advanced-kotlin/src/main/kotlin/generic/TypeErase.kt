@@ -17,7 +17,7 @@ fun main() {
 inline fun <reified T> T.toSuperString() {
     // 클래스 정보를 가져오려할 때 에러가 발생한다
     // 제네릭 타입은 런타임에서 타입이 사라지기 때문에 class 정보를 가져오지 못하는 것이다
-     println("${T::class.java.name}: $this")
+    println("${T::class.java.name}: $this")
 }
 
 // inline은 코드의 본문을 호출 지점으로 이동시켜 컴파일되는 함수
@@ -51,3 +51,27 @@ fun checkStringList(data: Any) {
         }
     }
 }
+
+// 타입 파라미터 쉐도잉
+class CageShadow<T : Animal> {
+    // 클래스의 T가 함수의 T에 의해 쉐도잉 되는 것
+    fun <T : Animal> addAnimal(animal: T) {
+        // 전역 변수와 지역 변수의 개념과 비슷함
+        // 함수의 T : Animal이 class의 T : Animal을 덮어씌운다
+    }
+}
+
+open class CageV1<T : Animal> {
+    fun addAnimal(animal: T) {
+
+    }
+}
+
+class CageV2<T : Animal> : CageV1<T>()
+
+class GoldFishCageV2 : CageV1<GoldFish>()
+
+fun handleCacheStoreV1(store: Map<String, MutableList<String>>) {}
+
+typealias Store = Map<String, MutableList<String>>
+fun handleCacheStoreV2(store: Store) {}
