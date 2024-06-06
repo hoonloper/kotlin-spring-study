@@ -14,3 +14,7 @@ S
 -.idea/sonarlint/securityhotspotstore/index.pb,8/8/88a9255124c95bdc913197c120a8d560edc59c8e
 P
  src/main/kotlin/generic/Cage2.kt,8/d/8d2785bb1de926e04e5be056c8df75cae63dd0b9
+P
+ src/main/kotlin/generic/Cage3.kt,0/0/0089f9c233bf1ba0592af7d47cd5a87d1a5f301b
+P
+ src/main/kotlin/generic/Cage4.kt,c/7/c77bcb09aa5ac63158827bef815654440540cfca
