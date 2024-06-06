@@ -28,3 +28,5 @@ W
 +src/test/kotlin/lateinit_lazy/PersonTest.kt,5/5/5536daf0e467a98c857458e0fd1c2cc4ba3b955a
 X
 (src/main/kotlin/lateinit_lazy/Person3.kt,7/b/7b562203cfed7f0bf43d995ec2418e79020af0b6
+\
+,src/main/kotlin/lateinit_lazy/DelegateFun.kt,7/3/73fff84bdae9d417bf68a22ecd20ea234214208e
