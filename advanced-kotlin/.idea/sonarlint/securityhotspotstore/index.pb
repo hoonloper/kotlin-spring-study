@@ -40,3 +40,5 @@ V
 &src/jmh/kotlin/example/SequenceTest.kt,7/d/7ddd55e37da581fce4cc32fc809264de6c11eead
 x
 Hsrc/main/kotlin/higher_order_function_and_literal/HigherOrderFunction.kt,9/5/95949969ec90081797666db57a28d440885771fe
+y
+Isrc/main/kotlin/higher_order_function_and_literal/HigherOrderFunction2.kt,0/3/0375c0ca9a60d55e069efe04fa690ccb75ee6c02
