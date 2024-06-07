@@ -42,3 +42,5 @@ x
 Hsrc/main/kotlin/higher_order_function_and_literal/HigherOrderFunction.kt,9/5/95949969ec90081797666db57a28d440885771fe
 y
 Isrc/main/kotlin/higher_order_function_and_literal/HigherOrderFunction2.kt,0/3/0375c0ca9a60d55e069efe04fa690ccb75ee6c02
+s
+Csrc/main/kotlin/higher_order_function_and_literal/InlineFunction.kt,c/7/c7b6a79924ded91cba641d1ea1318faae344b823
