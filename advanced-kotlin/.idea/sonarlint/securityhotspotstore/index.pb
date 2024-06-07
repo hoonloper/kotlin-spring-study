@@ -38,3 +38,5 @@ Y
 build.gradle.kts,d/b/dbcff70658daf80b53ce624f6adcaa529df5ed8d
 V
 &src/jmh/kotlin/example/SequenceTest.kt,7/d/7ddd55e37da581fce4cc32fc809264de6c11eead
+x
+Hsrc/main/kotlin/higher_order_function_and_literal/HigherOrderFunction.kt,9/5/95949969ec90081797666db57a28d440885771fe
