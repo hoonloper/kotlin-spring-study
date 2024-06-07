@@ -44,3 +44,11 @@ y
 Isrc/main/kotlin/higher_order_function_and_literal/HigherOrderFunction2.kt,0/3/0375c0ca9a60d55e069efe04fa690ccb75ee6c02
 s
 Csrc/main/kotlin/higher_order_function_and_literal/InlineFunction.kt,c/7/c7b6a79924ded91cba641d1ea1318faae344b823
+t
+Dsrc/main/kotlin/higher_order_function_and_literal/SAMAndReference.kt,1/7/1725378ba3115e3fecafb7c5913ee45a0e157c30
+x
+Hsrc/main/kotlin/higher_order_function_and_literal/SAMAndReferenceJava.kt,7/1/713546c97dfab80dec86a39313787ce32956ffc4
+z
+Jsrc/main/kotlin/higher_order_function_and_literal/SAMAndReferenceJava.java,8/f/8fb4655971f8a4c9ff582b02ff6eb497b78bbbd3
+n
+>src/main/kotlin/higher_order_function_and_literal/Reference.kt,e/f/ef563b5c258d64a0b034091e17ca17e7ccb662f4
