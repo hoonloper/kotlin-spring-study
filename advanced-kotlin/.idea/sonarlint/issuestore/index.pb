@@ -52,3 +52,9 @@ z
 Jsrc/main/kotlin/higher_order_function_and_literal/SAMAndReferenceJava.java,8/f/8fb4655971f8a4c9ff582b02ff6eb497b78bbbd3
 n
 >src/main/kotlin/higher_order_function_and_literal/Reference.kt,e/f/ef563b5c258d64a0b034091e17ca17e7ccb662f4
+k
+;src/main/kotlin/operator_overroading/OperatorOverroading.kt,d/3/d32b985ddb7f6a5202e200eab13f99b7e283dd30
+k
+;src/main/kotlin/operator_overroading/OperatorOverloading.kt,a/1/a1624b2a1b44cf044e1e57c3164e58e5a692f4e8
+k
+;src/main/kotlin/operator_overloading/OperatorOverloading.kt,f/7/f768ca6572eac34f0b4736b59866785230bf4bfb
