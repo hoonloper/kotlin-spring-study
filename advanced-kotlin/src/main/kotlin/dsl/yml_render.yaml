@@ -1,0 +1,9 @@
+version: 3
+services:
+  db:
+    image: mysql
+    environment:
+      - USER: myuser
+      - PASSWORD: mypassword
+    port:
+      - "9999:3306"

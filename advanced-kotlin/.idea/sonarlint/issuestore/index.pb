@@ -58,3 +58,9 @@ k
 ;src/main/kotlin/operator_overroading/OperatorOverloading.kt,a/1/a1624b2a1b44cf044e1e57c3164e58e5a692f4e8
 k
 ;src/main/kotlin/operator_overloading/OperatorOverloading.kt,f/7/f768ca6572eac34f0b4736b59866785230bf4bfb
+J
+src/main/kotlin/dsl/Dsl.kt,b/7/b7cb0981ba625a6ca48df378eb36a70ad12247ea
+P
+ src/main/kotlin/dsl/YmlRender.kt,8/d/8df7263a70abeaed7358afc512e0ff00fdce82e4
+S
+#src/main/kotlin/dsl/yml_render.yaml,7/8/78186d2e2b339b849fd5eacf336255f99d071044
