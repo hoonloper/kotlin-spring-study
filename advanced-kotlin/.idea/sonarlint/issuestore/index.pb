@@ -84,3 +84,5 @@ h
 8src/main/kotlin/annotation_and_reflection/DIContainer.kt,e/1/e1de7e53b097284e072dbe3cfa13a56c43a9e2ae
 e
 5src/main/kotlin/annotation_and_reflection/TypeSafe.kt,a/2/a2f445e9e6c6080db14f1025013ccdb0ef3b56ff
+K
+src/main/kotlin/more/Tip.kt,1/9/19c7abf78c86835d33d756a22efc9f161579a680
