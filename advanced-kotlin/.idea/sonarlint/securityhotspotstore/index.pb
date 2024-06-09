@@ -88,3 +88,9 @@ K
 src/main/kotlin/more/Tip.kt,1/9/19c7abf78c86835d33d756a22efc9f161579a680
 L
 src/main/kotlin/more/Tip2.kt,3/6/36c43f91757cc3d1396b1000982ff5e8c065e36b
+L
+src/main/kotlin/more/Tip3.kt,5/2/525f31a3092c47368598f3a492f5e982c9c1be64
+=
+.editorconfig,6/2/626a747c8694eaae66f2afb3d1a745b045782c70
+C
+settings.gradle.kts,7/4/749edfcc96398253e5b3416184e95c46621da850

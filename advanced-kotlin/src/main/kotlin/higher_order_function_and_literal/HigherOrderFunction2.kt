@@ -3,7 +3,7 @@ package higher_order_function_and_literal
 class HigherOrderFunction2
 
 fun main() {
-    val add = { a:Int, b: Int -> a + b }
+    val add = { a: Int, b: Int -> a + b }
     add.invoke(1, 2)
 
     val add2 = fun Int.(other: Long): Int = this + other.toInt()
@@ -21,7 +21,7 @@ fun main() {
     // 고차 함수는 일반 함수보다 오버헤드가 발생하지만 유연한 프로그래밍 즉, 간단하게 사용할 수 있다
 }
 
-fun compute2(num1: Int, num2: Int, op: (Int, Int) -> Int) : Int {
+fun compute2(num1: Int, num2: Int, op: (Int, Int) -> Int): Int {
     return op(num1, num2)
 }
 
@@ -31,4 +31,3 @@ fun onGenerator2(): (Int, Int) -> Int {
 
 // 앞 Int 확장 함수의 타입, this 수신 객체
 fun Int.add(other: Long): Int = this + other.toInt()
-

@@ -1,7 +1,7 @@
 package generic
 
 abstract class Animal(
-    val name: String,
+    val name: String
 )
 
 abstract class Fish(name: String) : Animal(name)

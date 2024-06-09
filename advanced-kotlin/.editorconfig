@@ -1,0 +1,30 @@
+# 추가적인 프로젝트나 플러그인을 찾지 않아도 됨을 명시
+root = true
+
+# 모든 파일을 적용하겠다는 의미
+[*]
+indent_size = 4 # 들여쓰기 사이즈
+indent_style = space # 들여쓰기를 탭으로 할 지, 스페이스로 할 지
+
+tab_width = 2 # 탭 width
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true # 클래스 마지막 여백을 냅둘거냐(true) 제거할거냐(false)
+insert_final_newline = true # 파일 마지막에 엔터가 있어야 하느냐 없어야 하느냐
+
+# 코틀린 코드에 대한 추가적인 설정
+[*.{kt, kts}]
+ktlint_code_style = intellij_idea # ktlint_official 스타일이 기본값임
+
+# standard rules
+# https://pinterest.github.io/ktlint/latest/
+# ktlint_[RuleSet 이름]_[Rule 값]
+
+ij_kotlin_packages_to_use_import_on_demand = true # 와일드 카드 import를 사용할 수 있도록 할 것인가 말 것인가
+
+# ktlint 혹은 intellij 둘 중 하나만 사용하는 것을 권장
+# 만약 둘 다 사용해야 한다면 xml을 작성해야 한다
+
+# gradle -> Tasks -> help -> addKtlintCheckGitPreCommitHook - git commit 전에 ktlint check가 실행된다
+# rm .git/hooks/pre-commit 명령어 치면 제거됨
+# git commit -m "adf" --no-verify 이렇게 커밋하면 ktlint 체크 무시됨

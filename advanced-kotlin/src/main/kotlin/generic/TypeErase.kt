@@ -28,8 +28,7 @@ inline fun <reified T> List<*>.hasAnyInstanceOf(): Boolean {
     return this.any { it is T }
 }
 
-class TypeErase {
-}
+class TypeErase
 
 fun checkStringList(data: Any) {
     // Error: Cannot check for instance of erased type: List<String>
@@ -63,7 +62,6 @@ class CageShadow<T : Animal> {
 
 open class CageV1<T : Animal> {
     fun addAnimal(animal: T) {
-
     }
 }
 

@@ -8,7 +8,7 @@ fun main() {
 
     // 익명 함수
     compute(5, 3, fun(a: Int, b: Int) = a + b)
-    compute(5, 3, fun(a: Int, b: Int) : Int {
+    compute(5, 3, fun(a: Int, b: Int): Int {
         return a + b
     })
     compute(5, 3, fun(a, b) = a + b)
@@ -38,7 +38,7 @@ fun main() {
     })
 }
 
-fun compute(num1: Int, num2: Int, op: (Int, Int) -> Int) : Int {
+fun compute(num1: Int, num2: Int, op: (Int, Int) -> Int): Int {
     return op(num1, num2)
 }
 
@@ -47,7 +47,7 @@ fun compute2(
     num2: Int,
     op: (Int, Int) -> Int = { a, b -> a + b },
     op2: (Int, Int) -> Int = fun(a, b) = a + b
-) : Int {
+): Int {
     return op(num1, num2)
 }
 
@@ -75,7 +75,7 @@ fun calculate(num1: Int, num2: Int, oper: Char): Int {
 
 enum class Operator(
     private val oper: Char,
-    val calcFun: (Int, Int) -> Int,
+    val calcFun: (Int, Int) -> Int
 ) {
     PLUS('+', { a, b -> a + b }),
     MINUS('-', { a, b -> a - b }),

@@ -19,7 +19,6 @@ fun main() {
 
     val carp2: Carp = cage2.getFirst()
 
-
     val goldFishCage = Cage2<GoldFish>()
     goldFishCage.put(GoldFish("금붕어"))
 
@@ -64,7 +63,7 @@ class Cage {
 }
 
 // 제네릭
-//class Cage2<T> {
+// class Cage2<T> {
 //    private val animals: MutableList<T> = mutableListOf()
 //
 //    fun getFirst(): T {
@@ -78,4 +77,4 @@ class Cage {
 //    fun moveFrom(cage: Cage2<T>) {
 //        this.animals.addAll(cage.animals)
 //    }
-//}
+// }

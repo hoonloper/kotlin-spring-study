@@ -91,18 +91,18 @@ class Service(val name: String) {
 
 data class PortRule(
     val host: Int,
-    val container: Int,
+    val container: Int
 )
 
 data class Environment(
     val key: String,
-    val value: String,
+    val value: String
 )
 
 operator fun String.minus(other: String): Environment {
     return Environment(
         key = this,
-        value = other,
+        value = other
     )
 }
 

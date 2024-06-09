@@ -16,7 +16,7 @@ object ContainerV1 {
         registeredClasses.add(clazz)
     }
 
-    fun <T: Any> getInstance(type: KClass<T>): T {
+    fun <T : Any> getInstance(type: KClass<T>): T {
         return registeredClasses.firstOrNull { clazz -> clazz == type }
             ?.let { clazz -> clazz.constructors.first().call() as T }
             ?: throw IllegalArgumentException("해당 인스턴스 타입을 찾을 수 없습니다.")
@@ -46,7 +46,7 @@ object ContainerV2 {
         registeredClasses.add(clazz)
     }
 
-    fun <T: Any> getInstance(type: KClass<T>): T {
+    fun <T : Any> getInstance(type: KClass<T>): T {
         if (type in cachedInstances) {
             return type.cast(cachedInstances[type])
         }
@@ -59,7 +59,7 @@ object ContainerV2 {
         return instance
     }
 
-    private fun <T: Any> instantiate(clazz: KClass<T>): T {
+    private fun <T : Any> instantiate(clazz: KClass<T>): T {
         val constructor = findUsableConstructor(clazz)
         val params = constructor.parameters
             .map { param -> getInstance(param.type.classifier as KClass<*>) }
@@ -70,7 +70,7 @@ object ContainerV2 {
 
     // clazz의 consturctor들 중, 사용할 수 있는 constructor
     // constructor에 넣어야 하는 타입들이 모두 등록된 경우 (컨테이너에서 관리하고 있는 경우)
-    private fun <T: Any> findUsableConstructor(clazz: KClass<T>): KFunction<T> {
+    private fun <T : Any> findUsableConstructor(clazz: KClass<T>): KFunction<T> {
         return clazz.constructors
             .firstOrNull { constructor -> constructor.parameters.isAllRegistered }
             ?: throw IllegalArgumentException("사용할 수 있는 생성자가 없습니다.")
@@ -115,7 +115,7 @@ class BService(
     private val aService: AService,
     private val cService: CService?
 ) {
-    constructor(aService: AService): this(aService, null)
+    constructor(aService: AService) : this(aService, null)
 
     fun print() {
         this.aService.print()

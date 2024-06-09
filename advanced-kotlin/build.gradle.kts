@@ -2,6 +2,8 @@ plugins {
     kotlin("jvm") version "1.9.0"
     application
     id("me.champeau.jmh") version "0.7.0"
+    id("org.jetbrains.dokka") version "1.9.0"
+    id("org.jlleitschuh.gradle.ktlint") version "11.4.2"
 }
 
 group = "org.example"

@@ -15,7 +15,7 @@ fun main() {
 
 abstract class Bird(
     name: String,
-    private val size: Int,
+    private val size: Int
 ) : Animal(name), Comparable<Bird> {
     override fun compareTo(other: Bird): Int {
         return this.size.compareTo(other.size)

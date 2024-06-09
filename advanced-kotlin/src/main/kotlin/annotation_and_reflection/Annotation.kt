@@ -14,7 +14,7 @@ annotation class Shape(
     val text: String,
     val texts: Array<String>,
     val number: Int,
-    val clazz: KClass<*>, // 코드로 작성한 클래스를 표현한 클래스
+    val clazz: KClass<*> // 코드로 작성한 클래스를 표현한 클래스
 )
 
 @Shape(text = "A", texts = ["A", "B"], number = 25, clazz = Annotation::class)

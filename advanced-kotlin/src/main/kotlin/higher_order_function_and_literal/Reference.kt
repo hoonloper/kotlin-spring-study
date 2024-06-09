@@ -19,5 +19,5 @@ fun main() {
 
 class Person2(
     val name: String,
-    val age: Int,
+    val age: Int
 )

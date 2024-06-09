@@ -40,7 +40,6 @@ open class SequenceTest {
     }
 }
 
-
 data class MyFruit(
     val name: String,
     val price: Long

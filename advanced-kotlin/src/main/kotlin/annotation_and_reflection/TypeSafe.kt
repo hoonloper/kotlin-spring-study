@@ -16,7 +16,6 @@ fun main() {
     cage.getOne<Carp>()
     cage.putOne<Carp>(Carp("잉어"))
 
-
     val superTypeToken1 = object : SuperTypeToken<List<GoldFish>>() {}
     val superTypeToken2 = object : SuperTypeToken<List<GoldFish>>() {}
     val superTypeToken3 = object : SuperTypeToken<List<Carp>>() {}
