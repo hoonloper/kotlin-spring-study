@@ -68,3 +68,15 @@ a
 1src/main/kotlin/annotation_and_relection/Shape.kt,4/0/40babe76da30cb2558516dc65e6d5e89af366ba1
 f
 6src/main/kotlin/annotation_and_relection/Annotation.kt,c/7/c750de5429321734dcd17d0a6595395773aa644d
+e
+5src/main/kotlin/annotation_and_relection/Relection.kt,b/b/bbbb6dafde35b6922a241d8ce6421220f8ba9d08
+g
+7src/main/kotlin/annotation_and_replection/Annotation.kt,c/5/c5c38bbf847411621f1a74546efcaee4ec221fed
+g
+7src/main/kotlin/annotation_and_replection/Replection.kt,0/2/0219c62b1ddab5ecc916a03356ae5efc48933751
+g
+7src/main/kotlin/annotation_and_replection/Reflection.kt,d/f/dfaebc5f1b622c35602afac3adfee5885b77b48e
+g
+7src/main/kotlin/annotation_and_reflection/Annotation.kt,2/9/296ba12643840bc38c069cd79282204416164119
+g
+7src/main/kotlin/annotation_and_reflection/Reflection.kt,f/5/f5860fcb140f79698f0a9a2feacd4537eb1cde2c
