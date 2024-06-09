@@ -86,3 +86,5 @@ e
 5src/main/kotlin/annotation_and_reflection/TypeSafe.kt,a/2/a2f445e9e6c6080db14f1025013ccdb0ef3b56ff
 K
 src/main/kotlin/more/Tip.kt,1/9/19c7abf78c86835d33d756a22efc9f161579a680
+L
+src/main/kotlin/more/Tip2.kt,3/6/36c43f91757cc3d1396b1000982ff5e8c065e36b
