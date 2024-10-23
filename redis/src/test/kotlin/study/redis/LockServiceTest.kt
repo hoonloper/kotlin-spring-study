@@ -10,7 +10,6 @@ import org.springframework.data.redis.core.RedisTemplate
 import java.time.Duration
 import java.util.concurrent.CountDownLatch
 import java.util.concurrent.Executors
-import java.util.concurrent.TimeUnit
 import java.util.concurrent.atomic.AtomicInteger
 
 @SpringBootTest
@@ -58,38 +57,32 @@ class LockServiceTest(
                 key = "$defaultKey-duplicate-call"
 
                 val threadCount = 10
-                val readyLatch = CountDownLatch(threadCount)
-                val startLatch = CountDownLatch(1)
                 val executor = Executors.newFixedThreadPool(threadCount)
+                val latch = CountDownLatch(threadCount)
 
-                it("성공한다") {
+                it("하나의 잠금만 성공한다") {
                     val lockSuccessCounter = AtomicInteger(0)
 
                     repeat(threadCount) {
                         executor.submit {
                             try {
-                                readyLatch.countDown()
-                                readyLatch.await()
-                                startLatch.await()
-
                                 val locked =
                                     lockService.lock(key = key, ttl = Duration.ofMillis(200))
                                 if (locked) {
                                     lockSuccessCounter.incrementAndGet()
                                 }
+                            } catch (e: Exception) {
+                                println(e)
                             } finally {
                                 val unlocked = lockService.unlock(key = key)
                                 println("Done $it - unlocked: $unlocked")
+
+                                latch.countDown()
                             }
                         }
                     }
 
-                    readyLatch.await()
-
-                    startLatch.countDown()
-
-                    executor.shutdown()
-                    executor.awaitTermination(1, TimeUnit.SECONDS)
+                    latch.await()
 
                     lockSuccessCounter.get().shouldBe(1)
                 }
@@ -134,20 +127,15 @@ class LockServiceTest(
                 key = "$defaultKey-duplicate-call"
 
                 val threadCount = 10
-                val readyLatch = CountDownLatch(threadCount)
-                val startLatch = CountDownLatch(1)
                 val executor = Executors.newFixedThreadPool(threadCount)
+                val latch = CountDownLatch(threadCount)
 
-                it("성공한다") {
+                it("하나의 잠금만 성공한다") {
                     val lockSuccessCounter = AtomicInteger(0)
 
                     repeat(threadCount) {
                         executor.submit {
                             try {
-                                readyLatch.countDown()
-                                readyLatch.await()
-                                startLatch.await()
-
                                 val locked =
                                     lockService.lock(key = key, ttl = Duration.ofMillis(200))
                                 if (locked) {
@@ -158,16 +146,13 @@ class LockServiceTest(
                             } finally {
                                 val unlocked = lockService.unlock(key = key)
                                 println("Done $it - unlocked: $unlocked")
+
+                                latch.countDown()
                             }
                         }
                     }
 
-                    readyLatch.await()
-
-                    startLatch.countDown()
-
-                    executor.shutdown()
-                    executor.awaitTermination(1, TimeUnit.SECONDS)
+                    latch.await()
 
                     lockSuccessCounter.get().shouldBe(1)
                 }

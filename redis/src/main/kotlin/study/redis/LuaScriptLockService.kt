@@ -10,7 +10,7 @@ class LuaScriptLockService(
     private val redisTemplate: RedisTemplate<String, Any>,
 ) : LockService {
     companion object {
-        private const val DEFAULT_KEY = "normal-lock"
+        private const val DEFAULT_KEY = "lua-script-lock"
         private const val DEFAULT_VALUE = "locking"
         private val DEFAULT_TTL = Duration.ofSeconds(3)
 
