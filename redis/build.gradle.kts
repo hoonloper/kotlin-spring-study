@@ -18,8 +18,9 @@ repositories {
     mavenCentral()
 }
 
+val kotestVersion = "5.6.2"
+val springExtensionVersion = "1.1.3"
 val mockkVersion = "1.13.3"
-val kotestVersion = "5.5.4"
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-redis")
@@ -27,9 +28,9 @@ dependencies {
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
-    testImplementation("io.kotest.extensions:kotest-extensions-spring:1.3.0")
     testImplementation("io.kotest:kotest-runner-junit5:$kotestVersion")
     testImplementation("io.kotest:kotest-assertions-core:$kotestVersion")
+    testImplementation("io.kotest.extensions:kotest-extensions-spring:$springExtensionVersion")
     testImplementation("io.mockk:mockk:$mockkVersion")
 }
 
